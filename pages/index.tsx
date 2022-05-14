@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
 import  useSWR, { Fetcher } from 'swr'
 import Blog from '../models/blog'
+import Button, {Elevation} from '../components/button'
+import { Colors } from '../constants'
 
 const Home: NextPage = () => {
 
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <span>Author.io</span>
         </h1>
-        <button>Get started</button>
+        <Button color={Colors.Primary} elevation={ Elevation.dp0 }>Get Started</Button>
       </main>
     </div>
   )
