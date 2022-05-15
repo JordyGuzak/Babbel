@@ -1,38 +1,14 @@
-import styles from './button.module.css'
+import { StyledButton } from "../styles"
 
-export enum Elevation {
-    dp0 = 'dp0',
-    dp1 = 'dp1'
-}
-
-interface ButtonProps {
+export interface ButtonProps {
     children?: JSX.Element | JSX.Element[] | string,
-    className?: string,
-    color?: string,
-    elevation?: Elevation,
+    variant?: "default" | "primary" | "success" | "warning" | undefined,
 }
 
-const getElevationStyleClass = (elevation: Elevation | undefined) => {
-    switch (elevation) {
-        case Elevation.dp0:
-            return styles.dp0;
-        case Elevation.dp1:
-            return styles.dp1;
-        default:
-            return styles.dp0;
-    }
-}
-
-export default function Button({
-    children,
-    color,
-    className,
-    elevation }: ButtonProps) {
+export default function Button({children, variant }: ButtonProps) {
     return (
-        <button className={`${styles.button} ${color} ${getElevationStyleClass(elevation)} ${className || ''}`}>
-            <div className='elevation'></div>
-            <div className={styles.overlay}></div>
+        <StyledButton variant={variant}>
             {children}
-        </button>
+        </StyledButton>
     )
 }
