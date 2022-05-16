@@ -1,19 +1,25 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { css } from 'styled-components'
 import theme from 'styled-theming'
+import colors from '../constants/colors';
 
-const color = theme.variants('mode', 'variant', {
-  default: { light: '#fff', dark: '#2f2f2f' },
-  primary: { light: '#5dbee2', dark: '#5dbee2' },
-  success: { light: '#80ed99', dark: '#57cc99' },
-  warning: { light: '#fcbf49', dark: '#f77f00' },
+export const color = theme.variants('mode', 'variant', {
+  default: { light: colors.white, dark: colors.black },
+  primary: { light: colors.primary, dark: colors.primary },
+  success: { light: colors.success, dark: colors.success },
+  warning: { light: colors.warning, dark: colors.warning },
 });
 
-const onColor = theme.variants('mode', 'variant', {
-  default: { light: '#2f2f2f', dark: '#fff' },
-  primary: { light: '#fff', dark: '#fff' },
-  success: { light: '#2f2f2f', dark: '#fff' },
-  warning: { light: '#2f2f2f', dark: '#fff' },
+export const onColor = theme.variants('mode', 'variant', {
+  default: { light: colors.black, dark: colors.white },
+  primary: { light: colors.white, dark: colors.white },
+  success: { light: colors.white, dark: colors.white },
+  warning: { light: colors.white, dark: colors.white },
 });
+
+const buttonBoxShadow = theme('mode', {
+  light: `box-shadow: 0px 0px 4px ${colors.black}`,
+  dark: `box-shadow: 0px 0px 4px ${colors.primary}`,
+})
 
 export const borderRadius = {
   small: '0.5rem',
@@ -22,51 +28,21 @@ export const borderRadius = {
   rounded: '50%'
 }
 
-export const GlobalStyles = createGlobalStyle`
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: 'Prompt', sans-serif;
-}
-
-body {
-    background-color: ${color};
-    color: ${onColor};
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (max-width: 600px) {
-  .blogs {
-    width: 100%;
-    flex-direction: column;
-  }
-}
-`;
-
 export const StyledButton = styled.button`
 position: relative;
 text-decoration: none;
 font-size: 1.5rem;
 font-family: inherit;
-font-weight: bold;
-padding: 0.5rem 1rem;
+/* font-weight: bold; */
+padding: 1rem 2rem;
 border-radius: 8px;
 /* border: 2px solid transparent; */
 border: none;
 cursor: pointer;
 user-select: none;
-box-shadow: 0px 0px 4px black;
+${css`${buttonBoxShadow}`};
 background-color: ${color};
-color: ${onColor};
+color: ${onColor || colors.black};
 `
 
 export const StyledSpan = styled.span`
@@ -78,3 +54,14 @@ export const StyledContainer = styled.div`
   color: ${onColor};
 `
 
+StyledButton.defaultProps = {
+  variant: 'default',
+};
+
+StyledContainer.defaultProps = {
+  variant: 'default'
+}
+
+StyledSpan.defaultProps = {
+  variant: 'default'
+}
