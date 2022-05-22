@@ -1,0 +1,9 @@
+.timeline {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.timeline > * {
+    margin-bottom: 1rem;
+}

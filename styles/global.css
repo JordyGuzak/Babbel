@@ -1,0 +1,117 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(/fonts/Roboto-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(/fonts/Roboto-Thin.ttf);
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(/fonts/Roboto-Bold.ttf);
+    font-weight: bold;
+}
+
+:root {
+    font-size: 14px;
+    --background-color: #ffffff;
+    --surface-color: #ffffff;
+    --primary-color: #ff1744;
+    --primary-light-color: #ff616f;
+    --primary-dark-color: #c4001d;
+    --on-primary-color: #ffffff;
+    --on-primary-light-color: #000000;
+    --on-primary-dark-color: #ffffff;
+    --on-background-color: #000000;
+    --on-surface-color: #000000;
+    --emphasis-high: 0.87;
+    --emphasis-medium: 0.64;
+    --emphasis-low: 0.45;
+    --border-radius-small: 0.2rem;
+    --border-radius-medium: 0.5rem;
+    --border-radius-big: 1rem;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--on-background-color);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.background {
+    background-color: var(--background-color);
+    color: var(--on-background-color);
+}
+
+.surface {
+    background-color: var(--surface-color);
+    color: var(--on-surface-color);
+}
+
+.primary {
+    background-color: var(--primary-color);
+    color: var(--on-primary-color);
+}
+
+.primary-light {
+    background-color: var(--primary-light-color);
+    color: var(--on-primary-light-color);
+}
+
+.primary-dark {
+    background-color: var(--primary-dark-color);
+    color: var(--on-primary-dark-color);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+@media (max-width: 600px) {
+    .blogs {
+        width: 100%;
+        flex-direction: column;
+    }
+}

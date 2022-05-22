@@ -1,15 +1,21 @@
-import { StyledButton } from "../styles"
+import React from "react";
+import { ThemeColor } from "../constants/theme";
+import styles from "../styles/button.module.css"
+
 
 export interface ButtonProps {
     children?: JSX.Element | JSX.Element[] | string,
-    variant?: "default" | "primary" | "success" | "warning" | undefined,
+    color?: ThemeColor | undefined,
+    onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 }
 
-export default function Button({children, variant }: ButtonProps) {
+export default function Button({children, color, onClick }: ButtonProps) {
     return (
-        <StyledButton variant={variant}>
+        <button onClick={onClick} className={color}>
+            <div className={styles.elevation}></div>
             {children}
-        </StyledButton>
+            <div className={styles.overlay}></div>
+        </button>
     )
 }
 
