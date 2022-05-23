@@ -15,8 +15,25 @@
     margin-bottom: 1rem;
 }
 
+.title {
+    opacity: var(--emphasis-high);
+}
+
+.author-container {
+    display: flex;
+    flex-direction: row;
+}
+
 .author {
     opacity: var(--emphasis-medium);
+    font-weight: bolder;
+    flex-grow: 1;
+}
+
+.author:hover {
+    color: var(--primary-color);
+    opacity: var(--emphasis-high);
+    user-select: none;
 }
 
 .date {
@@ -33,7 +50,12 @@
     margin-right: 2rem;
     cursor: pointer;
     user-select: none;
-    
+    opacity: var(--emphasis-medium);
+}
+
+.stats__item:hover {
+    color: var(--primary-color);
+    opacity: var(--emphasis-high);
 }
 
 .likes {
@@ -41,7 +63,8 @@
 }
 
 .likes:hover {
-    color: var(--primary-color);
+    color: #ff1744;
+    opacity: var(--emphasis-high);
 }
 
 .overlay {
@@ -53,9 +76,14 @@
     margin: 0;
     background-color: var(--on-surface-color);
     opacity: 0;
-    transition: opacity .5s;
+    transition: opacity .3s;
+    pointer-events: none;
 }
 
-.overlay:hover {
-    opacity: 0.02;
+.timeline-item:hover .overlay {
+    opacity: 0.03;
+}
+
+.timeline-item:active .overlay {
+    opacity: 0.06;
 }

@@ -6,5 +6,5 @@ interface OverlayProps {
 }
 
 export default function Overlay({color} : OverlayProps) {
-    return <div className={styles.overlay + " " + color}></div>
+    return <div className={styles.overlay}></div>
 }

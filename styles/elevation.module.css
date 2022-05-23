@@ -1,0 +1,41 @@
+.elevation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+:global(.dark-theme .low).elevation {
+    opacity: 0.03;
+}
+
+:global(.dark-theme .medium).elevation {
+    opacity: 0.05;
+}
+
+:global(.dark-theme .high).elevation {
+    opacity: 0.08;
+}
+
+:global(.dark-theme) .elevation {
+    background-color: var(--on-background-color);
+}
+
+:global(.dark-theme .surface) .elevation {
+    background-color: var(--on-surface-color);
+}
+
+:global(.dark-theme .primary) .elevation {
+    background-color: var(--on-primary-color);
+}
+
+:global(.dark-theme .primary-light) .elevation {
+    background-color: var(--on-primary-light-color);
+}
+
+:global(.dark-theme .primary-dark) .elevation {
+    background-color: var(--on-primary-dark-color);
+}
