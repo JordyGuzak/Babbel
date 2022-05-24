@@ -96,6 +96,20 @@ h4 {
     color: var(--on-primary-dark-color);
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.grow {
+    flex-grow: 1;
+}
+
 @media (max-width: 600px) {
     .blogs {
         width: 100%;
