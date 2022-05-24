@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;0,900;1,100;1,400;1,700&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;0,900;1,100;1,400;1,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&family=Roboto+Slab:wght@100;400;700&family=Roboto:ital,wght@0,100;0,400;0,700;0,900;1,100;1,400;1,700&display=swap');
 :root {
     font-size: 14px;
     --background-color: #ffffff;
@@ -31,7 +31,8 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
 }
 
 .theme-container {
@@ -53,22 +54,23 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: bold;
 }
 
 h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
 }
 
 h3 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bolder;
 }
 
 h4 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bolder;
 }
 
 .background {

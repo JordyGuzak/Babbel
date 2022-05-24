@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 import useSWR, { Fetcher } from 'swr'
 import Timeline from '../components/timeline'
 import TimelineItem from '../components/timeline-item'
@@ -26,7 +27,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>      
         <Timeline className={styles.timeline}>
           {data.map(post => {
-            return <TimelineItem key={post.id} post={post}/>
+            return (<Link key={post.id} href={`/posts/${post.title}`} passHref><TimelineItem  post={post}/></Link>)
           })}
         </Timeline>
       </main>

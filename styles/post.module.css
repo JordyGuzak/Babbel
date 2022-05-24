@@ -1,0 +1,35 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.post {
+    margin-top: 3rem;
+    border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+    padding: 2rem;
+    min-height: calc(100vh - 3rem);
+    width: 800px;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post p {
+    opacity: var(--emphasis-high);
+}
+
+.post img {
+    max-width: 100%;
+}
+
+@media (max-width: 600px) {
+    .post {
+        margin-top: 0;
+        width: 100%;
+        min-height: 100vh;
+    }
+}

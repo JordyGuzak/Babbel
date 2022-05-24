@@ -2,26 +2,17 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import ReactMarkdown from "react-markdown";
-import styled from "styled-components";
 import useSWR, { Fetcher } from 'swr'
+import Surface from "../../components/surface";
 import Post from "../../models/post";
-
-const Main = styled.main`
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
+import styles from "../../styles/post.module.css"
 
 export default function BlogPage() {
 
     const fetcher: Fetcher<Post> = (url: string) => fetch(url).then(res => res.json())
     const router = useRouter();
     const { title } = router.query;
-    const { data } = useSWR<Post>(`/api/blogs/${title}`, fetcher)
+    const { data } = useSWR<Post>(`/api/posts/${title}`, fetcher)
 
     if (!data) {
         return <p>Loading...</p>
@@ -32,10 +23,11 @@ export default function BlogPage() {
             <Head>
                 <title>First Post</title>
             </Head>
-            <Main>
-                <ReactMarkdown children={data.content}></ReactMarkdown>
-                <Link href="/"><a>Back</a></Link>
-            </Main>
+            <main className={styles.main}>
+                <Surface className={styles.post} elevation="medium">
+                    <ReactMarkdown children={data.content}></ReactMarkdown>
+                </Surface>
+            </main>
         </>
     );
 }

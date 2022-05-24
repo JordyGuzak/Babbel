@@ -10,7 +10,7 @@
     pointer-events: none;
 }
 
-*:hover > .overlay {
+:global(.selectable:hover) > .overlay {
     opacity: 0.03;
 }
 
