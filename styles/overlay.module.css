@@ -11,5 +11,25 @@
 }
 
 *:hover > .overlay {
-    opacity: 0.04;
+    opacity: 0.03;
+}
+
+:global(.background) .overlay {
+    background-color: var(--on-background-color);
+}
+
+:global(.surface) .overlay {
+    background-color: var(--on-surface-color);
+}
+
+:global(.primary) .overlay {
+    background-color: var(--on-primary-color);
+}
+
+:global(.primary-light) .overlay {
+    background-color: var(--on-primary-light-color);
+}
+
+:global(.primary-dark) .overlay {
+    background-color: var(--on-primary-dark-color);
 }

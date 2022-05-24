@@ -1,43 +1,37 @@
 .timeline-item {
-    position: relative;
     display: flex;
     flex-direction: column;
-    background-color: var(--surface-color);
-    color: var(--on-surface-color);
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 2px 0 rgb(0 0 0 / 12%);
     border-radius: var(--border-radius-medium);
     padding: 1rem;
-    overflow: hidden;
     cursor: pointer;
-}
-
-.timeline-item > * {
-    margin-bottom: 1rem;
 }
 
 .title {
     opacity: var(--emphasis-high);
+    margin-bottom: 1rem;
 }
 
 .author-container {
-    display: flex;
-    flex-direction: row;
+    margin-bottom: 1rem;
 }
 
 .author {
     opacity: var(--emphasis-medium);
     font-weight: bolder;
-    flex-grow: 1;
+    display: inline;
+    user-select: none;
 }
 
 .author:hover {
     color: var(--primary-color);
     opacity: var(--emphasis-high);
-    user-select: none;
 }
 
 .date {
     opacity: var(--emphasis-low);
+    display: inline;
+    float: right;
+    user-select: none;
 }
 
 .stats {
@@ -58,32 +52,18 @@
     opacity: var(--emphasis-high);
 }
 
+.comments {
+    composes: stats__item;
+}
+
+.shared {
+    composes: stats__item;
+}
+
 .likes {
     composes: stats__item;
 }
 
 .likes:hover {
     color: #ff1744;
-    opacity: var(--emphasis-high);
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    background-color: var(--on-surface-color);
-    opacity: 0;
-    transition: opacity .3s;
-    pointer-events: none;
-}
-
-.timeline-item:hover .overlay {
-    opacity: 0.03;
-}
-
-.timeline-item:active .overlay {
-    opacity: 0.06;
 }
