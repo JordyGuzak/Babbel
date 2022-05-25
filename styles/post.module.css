@@ -10,7 +10,7 @@
     padding: 2rem;
     min-height: calc(100vh - 3rem);
     width: 800px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -20,6 +20,11 @@
 .post h4,
 .post p {
     opacity: var(--emphasis-high);
+}
+
+.post p {
+    line-height: 1.5em;
+    text-align: justify;
 }
 
 .post img {

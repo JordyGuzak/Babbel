@@ -21,7 +21,7 @@ export default function BlogPage() {
     return (
         <>
             <Head>
-                <title>First Post</title>
+                <title>{data.title}</title>
             </Head>
             <main className={styles.main}>
                 <Surface className={styles.post} elevation="medium">

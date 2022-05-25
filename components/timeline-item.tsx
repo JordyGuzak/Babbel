@@ -10,9 +10,8 @@ interface TimelineItemProps {
     href?: string
 }
 
-const TimelineItem = React.forwardRef<HTMLAnchorElement, TimelineItemProps>(({ post, href }: TimelineItemProps, ref) => {
+export default function TimelineItem({post}: TimelineItemProps) {
     return (
-        <a href={href} ref={ref}>
             <Surface className={styles['timeline-item']} selectable>
                 <div className="row">
                     <div className="column">
@@ -35,8 +34,5 @@ const TimelineItem = React.forwardRef<HTMLAnchorElement, TimelineItemProps>(({ p
                     </div>
                 </div>
             </Surface>
-        </a>
     )
-})
-
-export default TimelineItem;
+}
