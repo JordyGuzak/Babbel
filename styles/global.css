@@ -30,7 +30,7 @@
 
 html {
     -webkit-tap-highlight-color: transparent;
- }
+}
 
 html,
 body {
@@ -122,4 +122,13 @@ h4 {
 
 .react-icons {
     vertical-align: middle;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #0a0a0a;
+        --surface-color: #0a0a0a;
+        --on-background-color: #ffffff;
+        --on-surface-color: #ffffff;
+    }
 }
