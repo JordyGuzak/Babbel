@@ -74,10 +74,17 @@
 }
 
 .stats__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-right: 2rem;
     cursor: pointer;
     user-select: none;
     opacity: var(--emphasis-medium);
+}
+
+.stats__item > * {
+    margin-right: 0.5rem;
 }
 
 .stats__item:hover {

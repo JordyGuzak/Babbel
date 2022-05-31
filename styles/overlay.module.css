@@ -10,10 +10,6 @@
     pointer-events: none;
 }
 
-:global(.selectable:hover) > .overlay {
-    opacity: 0.03;
-}
-
 :global(.background) .overlay {
     background-color: var(--on-background-color);
 }

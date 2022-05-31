@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import useSWR, { Fetcher } from 'swr'
+import Compose from '../components/compose'
 import Timeline from '../components/timeline'
 import TimelineItem from '../components/timeline-item'
 import Post from '../models/post'
@@ -25,15 +26,24 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Timeline className={styles.timeline}>
-          {data.map(post => {
-            return (<Link key={post.id} href={`/posts/${post.title}`}>
-              <a>
-                <TimelineItem post={post} />
-              </a>
-            </Link>)
-          })}
-        </Timeline>
+        <div className={styles.left}>
+
+        </div>
+        <div className={styles.center}>
+          <Compose className={styles.compose}/>
+          <Timeline className={styles.timeline}>
+            {data.map(post => {
+              return (<Link key={post.id} href={`/posts/${post.title}`}>
+                <a>
+                  <TimelineItem post={post} />
+                </a>
+              </Link>)
+            })}
+          </Timeline>
+        </div>
+        <div className={styles.right}>
+
+        </div>
       </main>
     </div>
   )

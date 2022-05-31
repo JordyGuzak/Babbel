@@ -1,21 +1,22 @@
+import classNames from "classnames";
 import React from "react";
-import { ThemeColor } from "../constants/theme";
 import styles from "../styles/button.module.css"
+import Surface from "./surface";
 
 
 export interface ButtonProps {
-    children?: JSX.Element | JSX.Element[] | string,
-    color?: ThemeColor | undefined,
-    onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
+    children?: JSX.Element | JSX.Element[] | string | undefined,
+    onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined,
+    className?: string | undefined,
+    overlayClassName?: string | undefined,
+    disabled?: boolean
 }
 
-export default function Button({children, color, onClick }: ButtonProps) {
+export default function Button({children, onClick, className, overlayClassName}: ButtonProps) {
     return (
-        <button onClick={onClick} className={color}>
-            <div className={styles.elevation}></div>
+        <Surface className={classNames(styles.button, className)} overlayClassName={classNames(styles.overlay, overlayClassName)} selectable>
             {children}
-            <div className={styles.overlay}></div>
-        </button>
+        </Surface>
     )
 }
 

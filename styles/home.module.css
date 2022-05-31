@@ -1,11 +1,30 @@
 .main {
     min-height: 100vh;
-    padding: 4rem 0;
+    display: flex;
+    flex-direction: row;
     flex: 1;
+    padding: 4rem;
+}
+
+.column {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+}
+
+.left {
+    composes: column;
+    flex: 1;
+}
+
+.center {
+    composes: column;
+    width: 500px;
+    max-width: 500px;
+}
+
+.right {
+    composes: column;
+    flex: 1;
 }
 
 .title {
@@ -15,7 +34,9 @@
 }
 
 .timeline {
-    width: 500px;
+    margin-top: 1rem;
+    
+    flex-shrink: 0;
 }
 
 @media (max-width: 600px) {

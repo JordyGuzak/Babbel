@@ -1,0 +1,56 @@
+.compose {
+    position: relative;
+    border-radius: var(--border-radius-medium);
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4rem;
+}
+
+.textarea {
+    position: relative;
+    flex: 1 0 auto;
+    
+    padding: 2rem 2rem 0 2rem;
+    height: auto;
+    overflow: auto;
+}
+
+.textarea:focus {
+    outline: none;
+}
+
+.placeholder {
+    position: absolute;
+    padding: 2rem;
+    opacity: var(--emphasis-low);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    padding: 0.75em;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.options > * {
+    margin-right: 0.5em;
+}
+
+.button {
+    border-radius: 50%;
+    padding: 0.75rem !important;
+}
+
+.post {
+    composes: button;
+    color: var(--primary-color);
+}
+
+.post .post-overlay {
+    background-color: var(--primary-color);
+}
