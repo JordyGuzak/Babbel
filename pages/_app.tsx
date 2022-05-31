@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className='theme-container background'>
+    <div className='theme-container dark-mode background'>
       <Component {...pageProps} />
     </div>
   )

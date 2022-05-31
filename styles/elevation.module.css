@@ -9,34 +9,34 @@
     pointer-events: none;
 }
 
-:global(.dark-theme .low).elevation {
-    opacity: 0.03;
-}
-
-:global(.dark-theme .medium).elevation {
+:global(.dark-mode .low).elevation {
     opacity: 0.05;
 }
 
-:global(.dark-theme .high).elevation {
-    opacity: 0.08;
+:global(.dark-mode .medium).elevation {
+    opacity: 0.07;
 }
 
-:global(.dark-theme) .elevation {
+:global(.dark-mode .high).elevation {
+    opacity: 0.09;
+}
+
+:global(.dark-mode) .elevation {
     background-color: var(--on-background-color);
 }
 
-:global(.dark-theme .surface) .elevation {
+:global(.dark-mode .surface) .elevation {
     background-color: var(--on-surface-color);
 }
 
-:global(.dark-theme .primary) .elevation {
+:global(.dark-mode .primary) .elevation {
     background-color: var(--on-primary-color);
 }
 
-:global(.dark-theme .primary-light) .elevation {
+:global(.dark-mode .primary-light) .elevation {
     background-color: var(--on-primary-light-color);
 }
 
-:global(.dark-theme .primary-dark) .elevation {
+:global(.dark-mode .primary-dark) .elevation {
     background-color: var(--on-primary-dark-color);
 }
