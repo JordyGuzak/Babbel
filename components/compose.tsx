@@ -22,7 +22,7 @@ export default function Compose({ className }: ComposeProps) {
 
     return (
         <Surface className={classNames(styles.compose, className)} color="surface" elevation="medium" selectable>
-            <span className={styles.placeholder} ref={placeholderRef} >What's up?</span>
+            <span className={styles.placeholder} ref={placeholderRef} >What&apos;s up?</span>
             <div className={styles.textarea} contentEditable onInput={onTextAreaValueChange} ref={textareaRef} />
             <div className={styles.controls}>
                 <div className={styles.options}>

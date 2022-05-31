@@ -25,7 +25,7 @@ export default function BlogPage() {
             </Head>
             <main className={styles.main}>
                 <Surface className={styles.post} elevation="medium">
-                    <ReactMarkdown children={data.content}></ReactMarkdown>
+                    <ReactMarkdown>{data.content}</ReactMarkdown>
                 </Surface>
             </main>
         </>
