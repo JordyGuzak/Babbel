@@ -4,6 +4,10 @@
     overflow: hidden;
 }
 
-.selectable:hover > .overlay {
-    opacity: 0.04;
+
+
+@media (hover: hover){
+    .selectable:hover > .overlay {
+        opacity: 0.04;
+    }
 }

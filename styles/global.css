@@ -28,6 +28,10 @@
     --on-surface-color: #ffffff;
 }
 
+html {
+    -webkit-tap-highlight-color: transparent;
+ }
+
 html,
 body {
     padding: 0;
