@@ -40,3 +40,37 @@
 :global(.dark-mode .primary-dark) .elevation {
     background-color: var(--on-primary-dark-color);
 }
+
+@media (prefers-color-scheme: dark) {
+    .low.elevation {
+        opacity: 0.05;
+    }
+    
+    .medium.elevation {
+        opacity: 0.07;
+    }
+    
+    .high.elevation {
+        opacity: 0.09;
+    }
+    
+     .elevation {
+        background-color: var(--on-background-color);
+    }
+    
+    .surface .elevation {
+        background-color: var(--on-surface-color);
+    }
+    
+    .primary .elevation {
+        background-color: var(--on-primary-color);
+    }
+    
+    .primary-light .elevation {
+        background-color: var(--on-primary-light-color);
+    }
+    
+    .primary-dark .elevation {
+        background-color: var(--on-primary-dark-color);
+    }
+}
