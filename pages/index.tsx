@@ -1,14 +1,20 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import useSWR, { Fetcher } from 'swr'
 import Compose from '../components/compose'
 import Timeline from '../components/timeline'
 import TimelineItem from '../components/timeline-item'
+import useUser from '../lib/use-user'
 import Post from '../models/post'
 import styles from '../styles/home.module.css'
 
-const Home: NextPage = () => {
+
+export default function Home() {
+
+  const { user } = useUser({
+    redirectTo: '/login'
+  })
 
   const fetcher: Fetcher<Post[]> = (url: string) => fetch(url).then(res => res.json());
 
@@ -30,7 +36,7 @@ const Home: NextPage = () => {
 
         </div>
         <div className={styles.center}>
-          <Compose className={styles.compose}/>
+          <Compose className={styles.compose} />
           <Timeline className={styles.timeline}>
             {data.map(post => {
               return (<Link key={post.id} href={`/posts/${post.title}`}>
@@ -48,5 +54,3 @@ const Home: NextPage = () => {
     </div>
   )
 }
-
-export default Home
