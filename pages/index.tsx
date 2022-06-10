@@ -1,20 +1,16 @@
-import type { GetServerSideProps, NextPage } from 'next'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import useSWR, { Fetcher } from 'swr'
 import Compose from '../components/compose'
 import Timeline from '../components/timeline'
 import TimelineItem from '../components/timeline-item'
+import { withSessionSsr } from '../lib/session'
 import useUser from '../lib/use-user'
 import Post from '../models/post'
 import styles from '../styles/home.module.css'
 
-
-export default function Home() {
-
-  const { user } = useUser({
-    redirectTo: '/login'
-  })
+export default function Home( {user} : InferGetServerSidePropsType<typeof getServerSideProps>) {
 
   const fetcher: Fetcher<Post[]> = (url: string) => fetch(url).then(res => res.json());
 
@@ -33,7 +29,6 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.left}>
-
         </div>
         <div className={styles.center}>
           <Compose className={styles.compose} />
@@ -54,3 +49,26 @@ export default function Home() {
     </div>
   )
 }
+
+export const getServerSideProps = withSessionSsr(
+  async function getServerSideProps({ req, res }) {
+    const { user } = req.session;
+
+    if (!user) {
+      res.setHeader("location", "/login")
+      res.statusCode = 302
+      res.end()
+      return {
+        props: {
+          user: {}
+        }
+      }
+    }
+
+    return {
+      props: {
+        user: user
+      }
+    }
+  }
+)

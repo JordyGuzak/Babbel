@@ -1,10 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { responseSymbol } from "next/dist/server/web/spec-compliant/fetch-event";
+import { withSessionRoute } from "../../lib/session";
 import Profile from "../../models/profile";
 import User from '../../models/user';
 import { supabase } from '../../utils/subabase-client'
 
-export default async function userRoute(req: NextApiRequest, res: NextApiResponse<User | undefined>) {
+
+export default withSessionRoute(userRoute)
+
+async function userRoute(req: NextApiRequest, res: NextApiResponse<User | null | undefined>) {
     // const { user } = await supabase.auth.api.getUserByCookie(req, res)
     // res.status(200).json(user);
 

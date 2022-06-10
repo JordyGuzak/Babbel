@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEventHandler, useState } from "react";
 import Button from "../components/button";
-import styles from '../styles/login.module.css'
+import styles from '../styles/register.module.css'
 
 const Login: NextPage = () => {
     const router = useRouter();
@@ -13,11 +13,11 @@ const Login: NextPage = () => {
 
     const formSubmit: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault()
-        signIn()
+        registerUser()
     }
 
-    const signIn = async () => {
-        const res = await fetch(`/api/login`, {
+    const registerUser = async () => {
+        const res = await fetch(`/api/register`, {
             body: JSON.stringify({
                 username: email,
                 password: password,
@@ -40,7 +40,7 @@ const Login: NextPage = () => {
     return (
         <div className={styles.main}>
             <form className={styles.form} onSubmit={formSubmit}>
-                <h2>Log in</h2>
+                <h2>Register</h2>
                 <label htmlFor="email">Email</label>
                 <input
                     id="email"
@@ -59,8 +59,7 @@ const Login: NextPage = () => {
                     onChange={(evt) => setPassword(evt.target.value)}
                     required
                 />
-                <Button className={classNames(styles.submit, 'primary')} onClick={_ => signIn()}>Login</Button>
-                <Link href='/register'><a>Register</a></Link>
+                <Button className={classNames(styles.submit, 'primary')} onClick={evt => registerUser()}>Register</Button>
             </form>
         </div>
 
