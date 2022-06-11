@@ -1,9 +1,7 @@
-.main {
-    min-height: 100vh;
+.container {
     display: flex;
     flex-direction: row;
-    flex: 1;
-    padding: 4rem;
+    padding: 3rem;
 }
 
 .column {

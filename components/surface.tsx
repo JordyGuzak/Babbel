@@ -1,12 +1,13 @@
-import { ThemeColor } from "../constants/theme"
+import { ThemeColor } from "../types/theme"
 import Elevation from "./elevation"
 import Overlay from "./overlay"
 import styles from '../styles/surface.module.css'
 import classNames from 'classnames'
+import ElevationLevel from "../types/elevation-level"
 
 interface SurfaceProps {
     children?: JSX.Element | JSX.Element[] | string
-    elevation?: 'low' | 'medium' | 'high',
+    elevation?: ElevationLevel,
     color?: ThemeColor,
     className?: string | undefined,
     elevationClassName?: string | undefined,

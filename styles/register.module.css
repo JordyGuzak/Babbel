@@ -11,10 +11,15 @@
 .form {
     display: flex;
     flex-direction: column;
+    width: 300px;
 }
 
 .form > * {
     margin-bottom: 1rem;
+}
+
+.inputfield {
+    margin-top: 0.5rem;
 }
 
 .submit {

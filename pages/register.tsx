@@ -1,13 +1,15 @@
 import classNames from "classnames";
 import type { NextPage } from "next";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEventHandler, useState } from "react";
 import Button from "../components/button";
+import Input from "../components/input";
+import Surface from "../components/surface";
 import styles from '../styles/register.module.css'
 
 const Login: NextPage = () => {
     const router = useRouter();
+    const [username, setUsername] = useState<string | null>(null)
     const [email, setEmail] = useState<string | null>(null)
     const [password, setPassword] = useState<string | null>(null)
 
@@ -19,7 +21,8 @@ const Login: NextPage = () => {
     const registerUser = async () => {
         const res = await fetch(`/api/register`, {
             body: JSON.stringify({
-                username: email,
+                username: username,
+                email: email,
                 password: password,
             }),
             headers: {
@@ -41,25 +44,35 @@ const Login: NextPage = () => {
         <div className={styles.main}>
             <form className={styles.form} onSubmit={formSubmit}>
                 <h2>Register</h2>
-                <label htmlFor="email">Email</label>
-                <input
+                <Input
+                    id="username"
+                    name="username"
+                    className={styles.inputfield}
+                    placeholder="Username"
+                    onChange={(evt) => setUsername(evt.target.value)}
+                    required
+                />
+
+                <Input
                     id="email"
                     name="email"
                     type="email"
+                    className={styles.inputfield}
+                    placeholder="Email"
                     autoComplete="email"
                     onChange={(evt) => setEmail(evt.target.value)}
                     required
                 />
-                <label htmlFor="password">Password</label>
-
-                <input
-                    type="password"
+                <Input
                     id="password"
                     name="password"
+                    type="password"
+                    className={styles.inputfield}
+                    placeholder="Password"
                     onChange={(evt) => setPassword(evt.target.value)}
                     required
                 />
-                <Button className={classNames(styles.submit, 'primary')} onClick={evt => registerUser()}>Register</Button>
+                <Button className={classNames(styles.submit)} onClick={evt => registerUser()}>Register</Button>
             </form>
         </div>
 

@@ -1,12 +1,13 @@
 import classNames from "classnames";
-import type { NextPage } from "next";
+import type { InferGetServerSidePropsType, NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEventHandler, useState } from "react";
 import Button from "../components/button";
+import { withSessionSsr } from "../lib/session";
 import styles from '../styles/login.module.css'
 
-const Login: NextPage = () => {
+export default function login({ user }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const router = useRouter();
     const [email, setEmail] = useState<string | null>(null)
     const [password, setPassword] = useState<string | null>(null)
@@ -67,4 +68,25 @@ const Login: NextPage = () => {
     )
 }
 
-export default Login;
+export const getServerSideProps = withSessionSsr(
+    async function getServersideProps({ req, res }) {
+        const { user } = req.session;
+
+        if (user) {
+            res.setHeader("location", "/")
+            res.statusCode = 302
+            res.end()
+            return {
+                props: {
+                    user: user
+                }
+            }
+        }
+
+        return {
+            props: {
+                user: {}
+            }
+        }
+    }
+)

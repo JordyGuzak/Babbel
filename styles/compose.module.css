@@ -55,6 +55,10 @@
     background-color: var(--primary-color);
 }
 
+.post:active > .post-overlay {
+    opacity: 0.2 !important;
+}
+
 @media (hover: hover){
     .post:hover > .post-overlay {
         opacity: 0.1;

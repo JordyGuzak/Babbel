@@ -1,0 +1,47 @@
+.inputfield {
+    position: relative;
+    padding: 0.5rem;
+    font-size: 1rem;
+    display: flex;
+}
+
+.input {
+    border: none;
+    appearance: none;
+    outline: none;
+    border-radius: var(--border-radius-small);
+    background-color: transparent;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    padding: 0;
+    opacity: var(--emphasis-high);
+    flex: 1;
+}
+
+.placeholder {
+    position: absolute;
+    opacity: var(--emphasis-low);
+    left: 0.5rem;
+    top: 0.5rem;
+    pointer-events: none;
+    font-size: 1rem;
+
+    transition: top 0.2s, font-size 0.2s;
+}
+
+.input:focus + .placeholder {
+    top: -1rem;
+    font-size: 75%;
+}
+
+.input.filled + .placeholder {
+    top: -1rem;
+    font-size: 75%;
+}
+
+@media (hover: hover){
+    .container:hover .overlay {
+        opacity: 0.04;
+    }
+}
