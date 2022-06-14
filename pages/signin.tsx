@@ -7,7 +7,7 @@ import Input from "../components/input";
 import { withSessionSsr } from "../lib/session";
 import styles from '../styles/login.module.css'
 
-export default function login({}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function SignIn({}: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const router = useRouter();
     const [email, setEmail] = useState<string | null>(null)
     const [password, setPassword] = useState<string | null>(null)

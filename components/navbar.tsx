@@ -9,13 +9,8 @@ interface INavBarProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
 
 export default function NavBar({ user, ...props }: INavBarProps) {
 
-    // const fetcher: Fetcher<Post[]> = (url: string) => fetch(url).then(res => res.json());
-
-    // const { data } = useSWR<Post[]>('api/posts', fetcher)
-
     const router = useRouter()
     
-
     const logout = async () => {
         const response = await fetch('/api/signout')
 

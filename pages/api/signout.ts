@@ -2,9 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { withSessionRoute } from "../../lib/session";
 import { supabase } from '../../utils/subabase-client'
 
-export default withSessionRoute(logoutRoute)
+export default withSessionRoute(signOutRoute)
 
-async function logoutRoute(req: NextApiRequest, res: NextApiResponse) {
+async function signOutRoute(req: NextApiRequest, res: NextApiResponse) {
     const { error } = await supabase.auth.signOut()
 
     if (error) {
