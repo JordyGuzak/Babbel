@@ -1,0 +1,29 @@
+.nav {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    background-color: var(--surface-color);
+    box-shadow: 0 1px 10px rgb(0 0 0 / 30%),
+        0 1px 10px rgb(0 0 0 / 17%);
+    padding: 1rem;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    float: left;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: var(--emphasis-high);
+    color: var(--primary-color);
+}
+
+.controls {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+}

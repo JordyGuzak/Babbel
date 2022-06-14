@@ -1,12 +1,13 @@
 import styles from '../styles/elevation.module.css'
 import classNames from 'classnames'
+import ElevationLevel from '../types/elevation-level';
 
 interface ElevationProps {
-    level: 'low' | 'medium' | 'high' | undefined,
+    level?: ElevationLevel,
     className?: string | undefined
 }
 
-const getElevation = (level: string | undefined): number => {
+const getElevation = (level: ElevationLevel): number => {
     switch (level) {
         case 'low':
             return 0.03;

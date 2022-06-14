@@ -14,18 +14,14 @@ export default function BlogPage() {
     const { title } = router.query;
     const { data } = useSWR<Post>(`/api/posts/${title}`, fetcher)
 
-    if (!data) {
-        return <p>Loading...</p>
-    }
-
     return (
         <>
             <Head>
-                <title>{data.title}</title>
+                <title>{data?.title}</title>
             </Head>
             <main className={styles.main}>
                 <Surface className={styles.post} elevation="medium">
-                    <ReactMarkdown>{data.content}</ReactMarkdown>
+                    <ReactMarkdown>{data?.content || ''}</ReactMarkdown>
                 </Surface>
             </main>
         </>

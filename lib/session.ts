@@ -3,8 +3,6 @@ import { withIronSessionApiRoute, withIronSessionSsr } from "iron-session/next";
 import {
     GetServerSidePropsContext,
     GetServerSidePropsResult,
-    GetStaticPropsContext,
-    GetStaticPropsResult,
     NextApiHandler,
 } from "next";
 import User from "../models/user";

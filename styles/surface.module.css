@@ -1,12 +1,19 @@
 .surface {
     position: relative;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 2px 0 rgb(0 0 0 / 12%);
     overflow: hidden;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 20%), 
+                0 1px 3px rgb(0 0 0 / 12%);
     transition: box-shadow 0.15s;
 }
 
-@media (hover: hover){
-    .selectable:hover > .overlay {
+@media (hover: hover) {
+    .selectable:hover>.overlay {
         opacity: 0.04;
     }
+}
+
+@media (prefers-color-scheme: dark) {
+    /* .surface {
+        box-shadow: none;
+    } */
 }

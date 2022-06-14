@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { ApiError } from "next/dist/server/api-utils";
+import { withSessionRoute } from "../../lib/session";
 import User from '../../models/user';
 import { supabase } from '../../utils/subabase-client'
 
@@ -13,9 +13,11 @@ export type Session = {
     user: User | null
 }
 
-export default async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
-    const { username, password } = req.body;
-    const { session, error } = await supabase.auth.signIn({email: username, password: password})
+export default withSessionRoute(signInRout)
+
+async function signInRout(req: NextApiRequest, res: NextApiResponse) {
+    const { email: email, password } = req.body;
+    const { session, error } = await supabase.auth.signIn({email: email, password: password})
 
     if (error) {
         return res.status(error?.status).json(error);

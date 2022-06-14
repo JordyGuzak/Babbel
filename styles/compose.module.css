@@ -42,7 +42,7 @@
 }
 
 .button {
-    border-radius: 50%;
+    border-radius: 50% !important;
     padding: 0.75rem !important;
 }
 
@@ -53,6 +53,10 @@
 
 .post .post-overlay {
     background-color: var(--primary-color);
+}
+
+.post:active > .post-overlay {
+    opacity: 0.2 !important;
 }
 
 @media (hover: hover){
