@@ -1,13 +1,13 @@
 import classNames from "classnames";
-import type { InferGetServerSidePropsType, NextPage } from "next";
-import Link from "next/link";
+import type { InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
 import React, { FormEventHandler, useState } from "react";
 import Button from "../components/button";
+import Input from "../components/input";
 import { withSessionSsr } from "../lib/session";
 import styles from '../styles/login.module.css'
 
-export default function login({ user }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function login({}: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const router = useRouter();
     const [email, setEmail] = useState<string | null>(null)
     const [password, setPassword] = useState<string | null>(null)
@@ -18,9 +18,9 @@ export default function login({ user }: InferGetServerSidePropsType<typeof getSe
     }
 
     const signIn = async () => {
-        const res = await fetch(`/api/login`, {
+        const res = await fetch(`/api/signin`, {
             body: JSON.stringify({
-                username: email,
+                email: email,
                 password: password,
             }),
             headers: {
@@ -41,30 +41,29 @@ export default function login({ user }: InferGetServerSidePropsType<typeof getSe
     return (
         <div className={styles.main}>
             <form className={styles.form} onSubmit={formSubmit}>
-                <h2>Log in</h2>
-                <label htmlFor="email">Email</label>
-                <input
+                <h1 className={styles.header}>Sign in</h1>
+                <Input
                     id="email"
                     name="email"
                     type="email"
+                    className={styles.field}
+                    placeholder="Email"
                     autoComplete="email"
                     onChange={(evt) => setEmail(evt.target.value)}
                     required
                 />
-                <label htmlFor="password">Password</label>
-
-                <input
-                    type="password"
+                <Input
                     id="password"
                     name="password"
+                    type="password"
+                    className={styles.field}
+                    placeholder="Password"
                     onChange={(evt) => setPassword(evt.target.value)}
                     required
                 />
-                <Button className={classNames(styles.submit, 'primary')} onClick={_ => signIn()}>Login</Button>
-                <Link href='/register'><a>Register</a></Link>
+                <Button className={classNames(styles.submit, styles.field, 'primary')} onClick={_ => signIn()}>Sign in</Button>
             </form>
         </div>
-
     )
 }
 

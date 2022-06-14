@@ -5,19 +5,37 @@
     justify-content: center;
     align-items: center;
     flex: 1;
-    padding: 4rem;
+    padding: 2rem;
 }
 
 .form {
     display: flex;
     flex-direction: column;
+    width: 300px;
 }
 
 .form > * {
     margin-bottom: 1rem;
 }
 
+.header {
+    margin-bottom: 2rem;
+}
+
+.field {
+    margin-top: 1rem;
+}
+
 .submit {
-    border-radius: 1rem;
-    align-self: flex-start;
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+.submit:active {
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+@media (max-width: 600px) {
+    .form {
+        width: 100%;
+    }
 }

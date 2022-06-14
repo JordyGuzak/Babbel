@@ -3,6 +3,7 @@ import Link from 'next/link'
 import useSWR, { Fetcher } from 'swr'
 import Compose from '../components/compose'
 import Layout from '../components/layout'
+import NavBar from '../components/navbar'
 import Timeline from '../components/timeline'
 import TimelineItem from '../components/timeline-item'
 import { withSessionSsr } from '../lib/session'
@@ -21,11 +22,12 @@ export default function Home( {user} : InferGetServerSidePropsType<typeof getSer
 
   return (
     <Layout>
+      <NavBar user={user}/>
       <div className={styles.container}>
         <div className={styles.left}>
         </div>
         <div className={styles.center}>
-          {user ?  <Compose className={styles.compose} /> : null}
+          {user ? <Compose className={styles.compose} /> : null}
           <Timeline className={styles.timeline}>
             {data.map(post => {
               return (<Link key={post.id} href={`/posts/${post.title}`}>

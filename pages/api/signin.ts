@@ -13,11 +13,11 @@ export type Session = {
     user: User | null
 }
 
-export default withSessionRoute(loginRoute)
+export default withSessionRoute(signInRout)
 
-async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
-    const { username, password } = req.body;
-    const { session, error } = await supabase.auth.signIn({email: username, password: password})
+async function signInRout(req: NextApiRequest, res: NextApiResponse) {
+    const { email: email, password } = req.body;
+    const { session, error } = await supabase.auth.signIn({email: email, password: password})
 
     if (error) {
         return res.status(error?.status).json(error);

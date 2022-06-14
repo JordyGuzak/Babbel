@@ -10,15 +10,16 @@ interface ComposeProps {
     className?: string | undefined
 }
 
-const textareaRef = useRef<HTMLDivElement>(null);
-const placeholderRef = useRef<HTMLSpanElement>(null);
-
-const onTextAreaValueChange = () => {
-    if (!placeholderRef.current || !textareaRef.current) return;
-    placeholderRef.current.style.display = textareaRef.current.innerText.length > 0 ? "none" : "block";
-}
-
 export default function Compose({ className }: ComposeProps) {
+
+    const textareaRef = useRef<HTMLDivElement>(null)
+    const placeholderRef = useRef<HTMLSpanElement>(null)
+    
+    const onTextAreaValueChange = () => {
+        if (!placeholderRef.current || !textareaRef.current) return;
+        placeholderRef.current.style.display = textareaRef.current.innerText.length > 0 ? "none" : "block";
+    }
+
     return (
         <Surface className={classNames(styles.compose, className)} color="surface" elevation="medium" selectable>
             <span className={styles.placeholder} ref={placeholderRef} >What&apos;s up?</span>

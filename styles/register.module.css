@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     flex: 1;
-    padding: 4rem;
+    padding: 2rem;
 }
 
 .form {
@@ -18,11 +18,24 @@
     margin-bottom: 1rem;
 }
 
-.inputfield {
-    margin-top: 0.5rem;
+.header {
+    margin-bottom: 2rem;
+}
+
+.field {
+    margin-top: 1rem;
 }
 
 .submit {
-    border-radius: 1rem;
-    align-self: flex-start;
+    box-shadow: 0 0 3px var(--primary-color);
+}
+
+.submit:active {
+    box-shadow: 0 0 3px var(--primary-color);
+}
+
+@media (max-width: 600px) {
+    .form {
+        width: 100%;
+    }
 }

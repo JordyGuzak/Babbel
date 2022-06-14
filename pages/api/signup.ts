@@ -2,9 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { withSessionRoute } from "../../lib/session";
 import { supabase } from '../../utils/subabase-client'
 
-export default withSessionRoute(registerRoute)
+export default withSessionRoute(signUpRoute)
 
-async function registerRoute(req: NextApiRequest, res: NextApiResponse) {
+async function signUpRoute(req: NextApiRequest, res: NextApiResponse) {
     const { username, password } = req.body;
     const { session, error } = await supabase.auth.signUp({email: username, password: password})
 

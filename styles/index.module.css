@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: row;
-    padding: 3rem;
+    padding: 5rem 1rem 0rem 1rem;
 }
 
 .column {
@@ -31,9 +31,11 @@
     font-size: 4rem;
 }
 
+.compose {
+    margin-bottom: 1rem;
+}
+
 .timeline {
-    margin-top: 1rem;
-    
     flex-shrink: 0;
 }
 

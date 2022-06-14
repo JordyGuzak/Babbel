@@ -42,7 +42,7 @@
 }
 
 .button {
-    border-radius: 50%;
+    border-radius: 50% !important;
     padding: 0.75rem !important;
 }
 

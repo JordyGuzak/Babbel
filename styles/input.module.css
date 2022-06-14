@@ -3,13 +3,13 @@
     padding: 0.5rem;
     font-size: 1rem;
     display: flex;
+    border-radius: var(--border-radius-small);
 }
 
 .input {
     border: none;
     appearance: none;
     outline: none;
-    border-radius: var(--border-radius-small);
     background-color: transparent;
     font-size: inherit;
     font-family: inherit;
@@ -19,6 +19,14 @@
     flex: 1;
 }
 
+.elevation {
+    border-radius: var(--border-radius-small);
+}
+
+.overlay {
+    border-radius: var(--border-radius-small);
+}
+
 .placeholder {
     position: absolute;
     opacity: var(--emphasis-low);
@@ -26,22 +34,25 @@
     top: 0.5rem;
     pointer-events: none;
     font-size: 1rem;
-
     transition: top 0.2s, font-size 0.2s;
 }
 
-.input:focus + .placeholder {
-    top: -1rem;
-    font-size: 75%;
+.input:focus + .placeholder, .input.filled + .placeholder {
+    top: -1.5rem;
+    font-size: 0.8rem;
 }
 
-.input.filled + .placeholder {
-    top: -1rem;
-    font-size: 75%;
+.inputfield.focus .overlay, .inputfield:focus.focus .overlay {
+    background-color: var(--primary-color) !important;
+    opacity: 0.1;
+}
+
+.inputfield.focus {
+   box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 @media (hover: hover){
-    .container:hover .overlay {
+    .inputfield:hover .overlay {
         opacity: 0.04;
     }
 }

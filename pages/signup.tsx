@@ -4,10 +4,9 @@ import { useRouter } from "next/router";
 import React, { FormEventHandler, useState } from "react";
 import Button from "../components/button";
 import Input from "../components/input";
-import Surface from "../components/surface";
 import styles from '../styles/register.module.css'
 
-const Login: NextPage = () => {
+const SignUp: NextPage = () => {
     const router = useRouter();
     const [username, setUsername] = useState<string | null>(null)
     const [email, setEmail] = useState<string | null>(null)
@@ -19,7 +18,7 @@ const Login: NextPage = () => {
     }
 
     const registerUser = async () => {
-        const res = await fetch(`/api/register`, {
+        const res = await fetch(`/api/signup`, {
             body: JSON.stringify({
                 username: username,
                 email: email,
@@ -43,12 +42,13 @@ const Login: NextPage = () => {
     return (
         <div className={styles.main}>
             <form className={styles.form} onSubmit={formSubmit}>
-                <h2>Register</h2>
+                <h1 className={styles.header}>Sign up</h1>
                 <Input
                     id="username"
                     name="username"
-                    className={styles.inputfield}
+                    className={styles.field}
                     placeholder="Username"
+                    autoComplete="none"
                     onChange={(evt) => setUsername(evt.target.value)}
                     required
                 />
@@ -57,7 +57,7 @@ const Login: NextPage = () => {
                     id="email"
                     name="email"
                     type="email"
-                    className={styles.inputfield}
+                    className={styles.field}
                     placeholder="Email"
                     autoComplete="email"
                     onChange={(evt) => setEmail(evt.target.value)}
@@ -67,16 +67,15 @@ const Login: NextPage = () => {
                     id="password"
                     name="password"
                     type="password"
-                    className={styles.inputfield}
+                    className={styles.field}
                     placeholder="Password"
                     onChange={(evt) => setPassword(evt.target.value)}
                     required
                 />
-                <Button className={classNames(styles.submit)} onClick={evt => registerUser()}>Register</Button>
+                <Button className={classNames(styles.submit, styles.field, 'primary')} onClick={evt => registerUser()}>Sign up</Button>
             </form>
         </div>
-
     )
 }
 
-export default Login;
+export default SignUp;
