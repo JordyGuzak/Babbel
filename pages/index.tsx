@@ -1,11 +1,13 @@
 import { InferGetServerSidePropsType } from 'next'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import useSWR, { Fetcher } from 'swr'
 import Compose from '../components/compose'
 import Layout from '../components/layout'
 import NavBar from '../components/navbar'
 import Timeline from '../components/timeline'
 import TimelineItem from '../components/timeline-item'
+import useScroll from '../hooks/useScroll'
 import { withSessionSsr } from '../lib/session'
 import Post from '../models/post'
 import styles from '../styles/index.module.css'
@@ -13,16 +15,27 @@ import styles from '../styles/index.module.css'
 export default function Home( {user} : InferGetServerSidePropsType<typeof getServerSideProps>) {
 
   const fetcher: Fetcher<Post[]> = (url: string) => fetch(url).then(res => res.json());
-
   const { data } = useSWR<Post[]>('api/posts', fetcher)
+  const [navClassList, setNavClassList] = useState<string[]>([]);
+  const scroll = useScroll()
 
+  useEffect(() => {
+    const classList: Array<string> = [];
+
+    if (scroll.y > 56 && scroll.y - scroll.lastY > 0)
+      classList.push(styles.navbarHidden);
+
+    setNavClassList(classList);
+
+  }, [scroll.y, scroll.lastY])
+  
   if (!data) {
     return null
   }
 
   return (
     <Layout>
-      <NavBar user={user}/>
+      <NavBar className={navClassList.join(' ')} user={user}/>
       <div className={styles.container}>
         <div className={styles.left}>
         </div>
@@ -32,7 +45,7 @@ export default function Home( {user} : InferGetServerSidePropsType<typeof getSer
             {data.map(post => {
               return (<Link key={post.id} href={`/posts/${post.title}`}>
                 <a>
-                  <TimelineItem post={post} />
+                  <TimelineItem className={styles.timelineItem} post={post} />
                 </a>
               </Link>)
             })}

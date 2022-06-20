@@ -42,7 +42,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    .low.elevation {
+    /* .low.elevation {
         opacity: 0.05;
     }
     
@@ -52,7 +52,7 @@
     
     .high.elevation {
         opacity: 0.09;
-    }
+    } */
     
      .elevation {
         background-color: var(--on-background-color);

@@ -22,16 +22,24 @@
     margin-bottom: 2rem;
 }
 
-.field {
-    margin-top: 1rem;
+.link {
+    color: var(--primary-color);
+    opacity: var(--emphasis-medium);
 }
 
-.submit {
-    box-shadow: 0 0 20px var(--primary-color);
+.formButton {
+    display: flex;
+    justify-content: center;
 }
 
-.submit:active {
-    box-shadow: 0 0 20px var(--primary-color);
+:global(.dark-mode) .submit {
+    box-shadow: 0 1px 3px rgb(var(--primary-rgb) / 20%),
+        0 1px 3px rgb(var(--primary-rgb) / 12%);
+}
+
+:global(.dark-mode) .submit:active {
+    box-shadow: 0 1px 20px rgb(var(--primary-rgb) / 20%),
+        0 1px 20px rgb(var(--primary-rgb) / 12%);
 }
 
 @media (max-width: 600px) {

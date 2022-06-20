@@ -39,12 +39,26 @@
     flex-shrink: 0;
 }
 
+.navbarHidden {
+    top: -4rem;
+}
+
 @media (max-width: 600px) {
-    .main {
-        padding: 1rem;
+    .container {
+        padding: 4rem 0rem 0rem 0rem;
     }
 
     .timeline {
         width: 100%;
+    }
+
+    .timelineItem {
+        border-radius: 0;
+        box-shadow: 0 0px 1px rgb(0 0 0 / 20%);
+    }
+
+    .compose {
+        margin-bottom: 0rem;
+        border-radius: 0;
     }
 }

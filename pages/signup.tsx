@@ -72,7 +72,7 @@ const SignUp: NextPage = () => {
                     onChange={(evt) => setPassword(evt.target.value)}
                     required
                 />
-                <Button className={classNames(styles.submit, styles.field, 'primary')} onClick={evt => registerUser()}>Sign up</Button>
+                <Button className={classNames(styles.formButton, styles.field, 'primary')} onClick={evt => registerUser()}>Sign up</Button>
             </form>
         </div>
     )

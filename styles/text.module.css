@@ -1,0 +1,11 @@
+.low {
+    opacity: var(--emphasis-low);
+}
+
+.medium {
+    opacity: var(--emphasis-medium);
+}
+
+.high {
+    opacity: var(--emphasis-high);
+}

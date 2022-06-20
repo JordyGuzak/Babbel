@@ -4,6 +4,12 @@
 
 }
 
-.timeline > * {
+.timeline>* {
     margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+    .timeline > * {
+        margin-bottom: 0;
+    }
 }

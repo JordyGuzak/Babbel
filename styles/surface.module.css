@@ -1,8 +1,10 @@
 .surface {
     position: relative;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 20%), 
-                0 1px 3px rgb(0 0 0 / 12%);
+    /* box-shadow: 0 1px 3px rgb(0 0 0 / 20%), 
+                0 1px 3px rgb(0 0 0 / 12%); */
+    box-shadow: 0 0px 1px rgb(0 0 0 / 20%),
+        0 0px 10px rgb(0 0 0 / 12%);
     transition: box-shadow 0.15s;
 }
 
@@ -13,7 +15,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    .surface {
+    /* .surface {
         box-shadow: none;
-    }
+    } */
 }

@@ -21,5 +21,5 @@ const getElevation = (level: ElevationLevel): number => {
 }
 
 export default function Elevation({level, className}: ElevationProps) {
-    return <div className={classNames(styles.elevation, className)} style={{opacity: getElevation(level)}} />
+    return <div className={classNames(styles.elevation, className)} />
 }

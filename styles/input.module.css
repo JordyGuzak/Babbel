@@ -21,6 +21,7 @@
 
 .elevation {
     border-radius: var(--border-radius-small);
+    opacity: 0.02;
 }
 
 .overlay {
@@ -37,12 +38,16 @@
     transition: top 0.2s, font-size 0.2s;
 }
 
-.input:focus + .placeholder, .input.filled + .placeholder {
+/* .input:focus + .placeholder, .input.filled + .placeholder {
     top: -1.5rem;
     font-size: 0.8rem;
+} */
+
+.input.filled + .placeholder {
+    opacity: 0;
 }
 
-.inputfield.focus .overlay, .inputfield:focus.focus .overlay {
+.inputfield.focus .overlay {
     background-color: var(--primary-color) !important;
     opacity: 0.1;
 }
@@ -54,5 +59,9 @@
 @media (hover: hover){
     .inputfield:hover .overlay {
         opacity: 0.04;
+    }
+
+    .inputfield.focus:hover .overlay {
+        opacity: 0.1;
     }
 }

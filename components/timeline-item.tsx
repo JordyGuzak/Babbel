@@ -2,21 +2,20 @@ import Post from "../models/post"
 import styles from "../styles/timeline-item.module.css"
 import moment from 'moment'
 import Surface from "./surface"
-import React, { useState } from "react"
 import { FaRegComment, FaRegHeart, FaRetweet } from 'react-icons/fa'
+import classNames from "classnames"
 
-interface TimelineItemProps {
+interface TimelineItemProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     post: Post
-    href?: string
 }
 
 const commentsClickEventHandler: React.MouseEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault();
 }
 
-export default function TimelineItem({post}: TimelineItemProps) {
+export default function TimelineItem({post, className, ...props}: TimelineItemProps) {
     return (
-            <Surface className={styles['timeline-item']} color="surface" elevation="low" selectable>
+            <Surface className={classNames(styles['timeline-item'], className)} elevation="low" selectable {...props} color="surface">
                 <div className="row">
                     <div className="column">
                         <Surface elevation="low" color="on-surface" className={styles["profile-picture"]}>

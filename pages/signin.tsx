@@ -1,9 +1,11 @@
 import classNames from "classnames";
 import type { InferGetServerSidePropsType } from "next";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEventHandler, useState } from "react";
 import Button from "../components/button";
 import Input from "../components/input";
+import Text from "../components/text";
 import { withSessionSsr } from "../lib/session";
 import styles from '../styles/login.module.css'
 
@@ -61,7 +63,10 @@ export default function SignIn({}: InferGetServerSidePropsType<typeof getServerS
                     onChange={(evt) => setPassword(evt.target.value)}
                     required
                 />
-                <Button className={classNames(styles.submit, styles.field, 'primary')} onClick={_ => signIn()}>Sign in</Button>
+
+                <Button className={classNames(styles.formButton, styles.submit, 'primary')} onClick={_ => signIn()}><Text>Sign in</Text></Button>
+                <Button className={classNames(styles.formButton, styles.forgot, 'surface')} onClick={_ => signIn()}><Text>Forgot password</Text></Button>
+                <div className={styles.forgotPassword}>No account yet? <Link href="/signup"><a className={styles.link}>Sign up</a></Link></div>
             </form>
         </div>
     )

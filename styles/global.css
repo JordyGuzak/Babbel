@@ -19,6 +19,8 @@
     --border-radius-small: 0.25rem;
     --border-radius-medium: 0.5rem;
     --border-radius-big: 1rem;
+    --primary-rgb: 25, 118, 210;
+    --primary-light-rgb: 99, 164, 255;
 }
 
 .dark-mode {
@@ -125,10 +127,10 @@ h4 {
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
+    /* :root {
         --background-color: #0a0a0a;
         --surface-color: #0a0a0a;
         --on-background-color: #ffffff;
         --on-surface-color: #ffffff;
-    }
+    } */
 }
