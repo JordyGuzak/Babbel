@@ -9,8 +9,8 @@ const posts: Post[] = [
     {
         id: '1',
         author: jordy,
-        createdAt: new Date(2022, 4, 12),
-        modifiedAt: new Date(2022, 4, 12),
+        created_at: new Date(2022, 4, 12),
+        modified_at: new Date(2022, 4, 12),
         title: 'Cats are funny',
         content: `# Cats are funny
         
@@ -27,15 +27,15 @@ Velit euismod in pellentesque massa placerat. Suscipit tellus mauris a diam maec
 
 Massa sed elementum tempus egestas sed sed. Viverra vitae congue eu consequat ac felis donec et odio. Consequat semper viverra nam libero justo. Felis eget nunc lobortis mattis aliquam faucibus purus in massa. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices eros. Sit amet justo donec enim diam. Proin libero nunc consequat interdum varius. Laoreet id donec ultrices tincidunt arcu non sodales. Lacus sed turpis tincidunt id. Pretium vulputate sapien nec sagittis aliquam. Massa id neque aliquam vestibulum morbi blandit cursus risus. Proin libero nunc consequat interdum varius sit amet mattis. Vitae purus faucibus ornare suspendisse sed nisi. Ac tortor vitae purus faucibus ornare suspendisse sed. Iaculis nunc sed augue lacus viverra. In fermentum et sollicitudin ac orci. Faucibus in ornare quam viverra orci. At elementum eu facilisis sed.
 `,
-        likes: 1098,
-        comments: 2034,
-        shared: 22
+        likes_count: 1098,
+        comments_count: 2034,
+        shared_count: 22
     },
     {
         id: '2',
         author: jordy,
-        createdAt: new Date(2022, 4, 22),
-        modifiedAt: new Date(2022, 4, 23),
+        created_at: new Date(2022, 4, 22),
+        modified_at: new Date(2022, 4, 23),
         title: 'Hello, World!',
         content: `# Hello, World!
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Mauris augue neque gravida in fermentum et. Mi sit amet mauris commodo quis imperdiet. Sed cras ornare arcu dui vivamus arcu. Malesuada bibendum arcu vitae elementum curabitur vitae nunc. Nec dui nunc mattis enim ut. Quisque non tellus orci ac. Quam elementum pulvinar etiam non quam lacus. Elementum curabitur vitae nunc sed velit dignissim sodales. Velit laoreet id donec ultrices tincidunt arcu. Ac felis donec et odio pellentesque diam volutpat commodo. Velit aliquet sagittis id consectetur purus. Sed libero enim sed faucibus turpis in eu.
@@ -49,15 +49,15 @@ Pharetra vel turpis nunc eget lorem dolor sed. Nec tincidunt praesent semper feu
 Velit euismod in pellentesque massa placerat. Suscipit tellus mauris a diam maecenas sed. Quis hendrerit dolor magna eget est lorem ipsum dolor. Tincidunt praesent semper feugiat nibh sed pulvinar proin gravida hendrerit. Dignissim sodales ut eu sem integer vitae. Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci. Elit at imperdiet dui accumsan sit amet. Vitae aliquet nec ullamcorper sit amet risus nullam. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Et netus et malesuada fames ac. Parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer.
         
 Massa sed elementum tempus egestas sed sed. Viverra vitae congue eu consequat ac felis donec et odio. Consequat semper viverra nam libero justo. Felis eget nunc lobortis mattis aliquam faucibus purus in massa. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices eros. Sit amet justo donec enim diam. Proin libero nunc consequat interdum varius. Laoreet id donec ultrices tincidunt arcu non sodales. Lacus sed turpis tincidunt id. Pretium vulputate sapien nec sagittis aliquam. Massa id neque aliquam vestibulum morbi blandit cursus risus. Proin libero nunc consequat interdum varius sit amet mattis. Vitae purus faucibus ornare suspendisse sed nisi. Ac tortor vitae purus faucibus ornare suspendisse sed. Iaculis nunc sed augue lacus viverra. In fermentum et sollicitudin ac orci. Faucibus in ornare quam viverra orci. At elementum eu facilisis sed.`,
-        likes: 203,
-        comments: 2034,
-        shared: 33,
+        likes_count: 203,
+        comments_count: 2034,
+        shared_count: 33,
     },
     {
         id: '3',
         author: jordy,
-        createdAt: new Date(2022, 4, 21),
-        modifiedAt: new Date(2022, 4, 21),
+        created_at: new Date(2022, 4, 21),
+        modified_at: new Date(2022, 4, 21),
         title: 'Know your audience',
         content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Mauris augue neque gravida in fermentum et. Mi sit amet mauris commodo quis imperdiet. Sed cras ornare arcu dui vivamus arcu. Malesuada bibendum arcu vitae elementum curabitur vitae nunc. Nec dui nunc mattis enim ut. Quisque non tellus orci ac. Quam elementum pulvinar etiam non quam lacus. Elementum curabitur vitae nunc sed velit dignissim sodales. Velit laoreet id donec ultrices tincidunt arcu. Ac felis donec et odio pellentesque diam volutpat commodo. Velit aliquet sagittis id consectetur purus. Sed libero enim sed faucibus turpis in eu.
 
@@ -68,15 +68,15 @@ Massa sed elementum tempus egestas sed sed. Viverra vitae congue eu consequat ac
         Velit euismod in pellentesque massa placerat. Suscipit tellus mauris a diam maecenas sed. Quis hendrerit dolor magna eget est lorem ipsum dolor. Tincidunt praesent semper feugiat nibh sed pulvinar proin gravida hendrerit. Dignissim sodales ut eu sem integer vitae. Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci. Elit at imperdiet dui accumsan sit amet. Vitae aliquet nec ullamcorper sit amet risus nullam. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Et netus et malesuada fames ac. Parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer.
         
         Massa sed elementum tempus egestas sed sed. Viverra vitae congue eu consequat ac felis donec et odio. Consequat semper viverra nam libero justo. Felis eget nunc lobortis mattis aliquam faucibus purus in massa. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices eros. Sit amet justo donec enim diam. Proin libero nunc consequat interdum varius. Laoreet id donec ultrices tincidunt arcu non sodales. Lacus sed turpis tincidunt id. Pretium vulputate sapien nec sagittis aliquam. Massa id neque aliquam vestibulum morbi blandit cursus risus. Proin libero nunc consequat interdum varius sit amet mattis. Vitae purus faucibus ornare suspendisse sed nisi. Ac tortor vitae purus faucibus ornare suspendisse sed. Iaculis nunc sed augue lacus viverra. In fermentum et sollicitudin ac orci. Faucibus in ornare quam viverra orci. At elementum eu facilisis sed.`,
-        likes: 203,
-        comments: 2034,
-        shared: 33,
+        likes_count: 203,
+        comments_count: 2034,
+        shared_count: 33,
     },
     {
         id: '4',
         author: jordy,
-        createdAt: new Date(2022, 4, 21),
-        modifiedAt: new Date(2022, 4, 21),
+        created_at: new Date(2022, 4, 21),
+        modified_at: new Date(2022, 4, 21),
         title: 'Hang onto your memories',
         content: `Save the moments that matter. Blogger lets you safely store thousands of posts, photos, and more with Google. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Mauris augue neque gravida in fermentum et. Mi sit amet mauris commodo quis imperdiet. Sed cras ornare arcu dui vivamus arcu. Malesuada bibendum arcu vitae elementum curabitur vitae nunc. Nec dui nunc mattis enim ut. Quisque non tellus orci ac. Quam elementum pulvinar etiam non quam lacus. Elementum curabitur vitae nunc sed velit dignissim sodales. Velit laoreet id donec ultrices tincidunt arcu. Ac felis donec et odio pellentesque diam volutpat commodo. Velit aliquet sagittis id consectetur purus. Sed libero enim sed faucibus turpis in eu.
 
@@ -87,15 +87,15 @@ Massa sed elementum tempus egestas sed sed. Viverra vitae congue eu consequat ac
         Velit euismod in pellentesque massa placerat. Suscipit tellus mauris a diam maecenas sed. Quis hendrerit dolor magna eget est lorem ipsum dolor. Tincidunt praesent semper feugiat nibh sed pulvinar proin gravida hendrerit. Dignissim sodales ut eu sem integer vitae. Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci. Elit at imperdiet dui accumsan sit amet. Vitae aliquet nec ullamcorper sit amet risus nullam. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Et netus et malesuada fames ac. Parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer.
         
         Massa sed elementum tempus egestas sed sed. Viverra vitae congue eu consequat ac felis donec et odio. Consequat semper viverra nam libero justo. Felis eget nunc lobortis mattis aliquam faucibus purus in massa. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices eros. Sit amet justo donec enim diam. Proin libero nunc consequat interdum varius. Laoreet id donec ultrices tincidunt arcu non sodales. Lacus sed turpis tincidunt id. Pretium vulputate sapien nec sagittis aliquam. Massa id neque aliquam vestibulum morbi blandit cursus risus. Proin libero nunc consequat interdum varius sit amet mattis. Vitae purus faucibus ornare suspendisse sed nisi. Ac tortor vitae purus faucibus ornare suspendisse sed. Iaculis nunc sed augue lacus viverra. In fermentum et sollicitudin ac orci. Faucibus in ornare quam viverra orci. At elementum eu facilisis sed.`,
-        likes: 203,
-        comments: 2034,
-        shared: 33,
+        likes_count: 203,
+        comments_count: 2034,
+        shared_count: 33,
     },
     {
         id: '5',
         author: jordy,
-        createdAt: new Date(2022, 4, 12),
-        modifiedAt: new Date(2022, 4, 12),
+        created_at: new Date(2022, 4, 12),
+        modified_at: new Date(2022, 4, 12),
         title: 'Cats are funny',
         content: `# Cats are funny
 ## Exhibit A: 
@@ -111,42 +111,42 @@ Velit euismod in pellentesque massa placerat. Suscipit tellus mauris a diam maec
 
 Massa sed elementum tempus egestas sed sed. Viverra vitae congue eu consequat ac felis donec et odio. Consequat semper viverra nam libero justo. Felis eget nunc lobortis mattis aliquam faucibus purus in massa. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices eros. Sit amet justo donec enim diam. Proin libero nunc consequat interdum varius. Laoreet id donec ultrices tincidunt arcu non sodales. Lacus sed turpis tincidunt id. Pretium vulputate sapien nec sagittis aliquam. Massa id neque aliquam vestibulum morbi blandit cursus risus. Proin libero nunc consequat interdum varius sit amet mattis. Vitae purus faucibus ornare suspendisse sed nisi. Ac tortor vitae purus faucibus ornare suspendisse sed. Iaculis nunc sed augue lacus viverra. In fermentum et sollicitudin ac orci. Faucibus in ornare quam viverra orci. At elementum eu facilisis sed.
 `,
-        likes: 1098,
-        comments: 2034,
-        shared: 22
+        likes_count: 1098,
+        comments_count: 2034,
+        shared_count: 22
     },
     {
         id: '6',
         author: jordy,
-        createdAt: new Date(2022, 4, 22),
-        modifiedAt: new Date(2022, 4, 23),
+        created_at: new Date(2022, 4, 22),
+        modified_at: new Date(2022, 4, 23),
         title: 'Hello, World!',
         content: `Hello there!`,
-        likes: 203,
-        comments: 2034,
-        shared: 33,
+        likes_count: 203,
+        comments_count: 2034,
+        shared_count: 33,
     },
     {
         id: '7',
         author: jordy,
-        createdAt: new Date(2022, 4, 21),
-        modifiedAt: new Date(2022, 4, 21),
+        created_at: new Date(2022, 4, 21),
+        modified_at: new Date(2022, 4, 21),
         title: 'Know your audience',
         content: `Find out which posts are a hit with Blogger’s built-in analytics. You’ll see where your audience is coming from and what they’re interested in. You can even connect your blog directly to Google Analytics for a more detailed look`,
-        likes: 203,
-        comments: 2034,
-        shared: 33,
+        likes_count: 203,
+        comments_count: 2034,
+        shared_count: 33,
     },
     {
         id: '8',
         author: jordy,
-        createdAt: new Date(2022, 4, 21),
-        modifiedAt: new Date(2022, 4, 21),
+        created_at: new Date(2022, 4, 21),
+        modified_at: new Date(2022, 4, 21),
         title: 'Hang onto your memories',
         content: `Save the moments that matter. Blogger lets you safely store thousands of posts, photos, and more with Google.`,
-        likes: 203,
-        comments: 2034,
-        shared: 33,
+        likes_count: 203,
+        comments_count: 2034,
+        shared_count: 33,
     }
 
 ]

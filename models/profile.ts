@@ -1,6 +1,6 @@
 
 type Profile = {
-    user_id: string,
+    id: string,
     username: string,
     avatar_url: string,
     website: string,

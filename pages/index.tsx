@@ -40,10 +40,10 @@ export default function Home( {user} : InferGetServerSidePropsType<typeof getSer
         <div className={styles.left}>
         </div>
         <div className={styles.center}>
-          {user ? <Compose className={styles.compose} /> : null}
+          {user ? <Compose className={styles.compose} user={user} /> : null}
           <Timeline className={styles.timeline}>
             {data.map(post => {
-              return (<Link key={post.id} href={`/posts/${post.title}`}>
+              return (<Link key={post.id} href={`/posts/${post.id}`}>
                 <a>
                   <TimelineItem className={styles.timelineItem} post={post} />
                 </a>

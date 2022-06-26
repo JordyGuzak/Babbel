@@ -5,12 +5,14 @@ import Button from "./button";
 import { FaPollH, FaRegImage, FaRegPaperPlane, FaRegSmile } from "react-icons/fa";
 import { MdGif } from "react-icons/md"
 import classNames from "classnames";
+import User from "../models/user";
 
 interface ComposeProps {
-    className?: string | undefined
+    className?: string | undefined,
+    user: User
 }
 
-export default function Compose({ className }: ComposeProps) {
+export default function Compose({ className, user }: ComposeProps) {
 
     const textareaRef = useRef<HTMLDivElement>(null)
     const placeholderRef = useRef<HTMLSpanElement>(null)
@@ -18,6 +20,19 @@ export default function Compose({ className }: ComposeProps) {
     const onTextAreaValueChange = () => {
         if (!placeholderRef.current || !textareaRef.current) return;
         placeholderRef.current.style.display = textareaRef.current.innerText.length > 0 ? "none" : "block";
+    }
+
+    const post = async () => {
+
+        const res = await fetch(`/api/users/${user.id}/posts`, {
+            body: JSON.stringify({
+                content: textareaRef.current?.innerText,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+        });
     }
 
     return (
