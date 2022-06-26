@@ -31,7 +31,7 @@ export default function Compose({ className }: ComposeProps) {
                     <Button className={styles.button}><FaPollH title="poll" /></Button>
                     <Button className={styles.button}><MdGif title="gif" /></Button>
                 </div>
-                <Button className={styles.post} overlayClassName={styles["post-overlay"]}><FaRegPaperPlane title="send" /></Button>
+                <Button className={styles.post} overlayClassName={styles["post-overlay"]}><FaRegPaperPlane title="send"/></Button>
             </div>
         </Surface>
     )

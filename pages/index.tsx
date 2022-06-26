@@ -14,20 +14,20 @@ import styles from '../styles/index.module.css'
 
 export default function Home( {user} : InferGetServerSidePropsType<typeof getServerSideProps>) {
 
-  const fetcher: Fetcher<Post[]> = (url: string) => fetch(url).then(res => res.json());
+  const fetcher: Fetcher<Post[]> = (url: string) => fetch(url).then(res => res.json())
   const { data } = useSWR<Post[]>('api/posts', fetcher)
-  const [navClassList, setNavClassList] = useState<string[]>([]);
+  const [navClassList, setNavClassList] = useState<string[]>([])
   const scroll = useScroll()
 
   useEffect(() => {
     const classList: Array<string> = [];
 
-    if (scroll.y > 56 && scroll.y - scroll.lastY > 0)
+    if (scroll.y > 56 && scroll.y - scroll.previousY >= 0)
       classList.push(styles.navbarHidden);
 
-    setNavClassList(classList);
+  setNavClassList(classList);
 
-  }, [scroll.y, scroll.lastY])
+  }, [scroll.y])
   
   if (!data) {
     return null

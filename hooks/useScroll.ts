@@ -4,18 +4,18 @@ export default function useScroll() {
   const [data, setData] = useState({
     x: 0,
     y: 0,
-    lastX: 0,
-    lastY: 0
+    previousX: 0,
+    previousY: 0
   })
 
   useEffect(() => {
     const handleScroll = () => {
-      setData((last) => {
+      setData((previous) => {
         return {
           x: window.scrollX,
           y: window.scrollY,
-          lastX: last.x,
-          lastY: last.y
+          previousX: previous.x,
+          previousY: previous.y
         }
       })
     }
