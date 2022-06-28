@@ -1,8 +1,7 @@
-import User from "./user";
 
 type Post = {
     id: string,
-    user: User,
+    username: string,
     created_at: Date,
     modified_at: Date,
     content: string,

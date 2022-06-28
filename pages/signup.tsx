@@ -1,9 +1,9 @@
-import classNames from "classnames";
-import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import React, { FormEventHandler, useState } from "react";
-import Button from "../components/button";
-import Input from "../components/input";
+import classNames from "classnames"
+import type { NextPage } from "next"
+import { useRouter } from "next/router"
+import React, { FormEventHandler, useState } from "react"
+import Button from "../components/button"
+import Input from "../components/input"
 import styles from '../styles/register.module.css'
 
 const SignUp: NextPage = () => {
@@ -31,12 +31,11 @@ const SignUp: NextPage = () => {
         });
 
         const response = await res.json();
-
         if (response.message) {
             console.log(response.message)
         }
 
-        if (response.user) router.push(`/`);
+        if (response.user) router.push(`/`)
     }
 
     return (
@@ -78,4 +77,4 @@ const SignUp: NextPage = () => {
     )
 }
 
-export default SignUp;
+export default SignUp

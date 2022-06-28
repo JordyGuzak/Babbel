@@ -16,15 +16,14 @@ export default function Compose({ className, user }: ComposeProps) {
 
     const textareaRef = useRef<HTMLDivElement>(null)
     const placeholderRef = useRef<HTMLSpanElement>(null)
-    
+
     const onTextAreaValueChange = () => {
         if (!placeholderRef.current || !textareaRef.current) return;
         placeholderRef.current.style.display = textareaRef.current.innerText.length > 0 ? "none" : "block";
     }
 
     const post = async () => {
-
-        const res = await fetch(`/api/users/${user.id}/posts`, {
+        const response = await fetch(`/api/posts`, {
             body: JSON.stringify({
                 content: textareaRef.current?.innerText,
             }),
@@ -33,6 +32,13 @@ export default function Compose({ className, user }: ComposeProps) {
             },
             method: "POST",
         });
+
+        console.log(response)
+
+        if (textareaRef.current) {
+            textareaRef.current.innerText = ''
+            onTextAreaValueChange()
+        }
     }
 
     return (
@@ -46,7 +52,7 @@ export default function Compose({ className, user }: ComposeProps) {
                     <Button className={styles.button}><FaPollH title="poll" /></Button>
                     <Button className={styles.button}><MdGif title="gif" /></Button>
                 </div>
-                <Button className={styles.post} overlayClassName={styles["post-overlay"]}><FaRegPaperPlane title="send"/></Button>
+                <Button className={styles.post} overlayClassName={styles["post-overlay"]} onClick={_ => post()}><FaRegPaperPlane title="send" /></Button>
             </div>
         </Surface>
     )

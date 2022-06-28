@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { withSessionRoute } from "../../lib/session";
+import { ApiError } from "next/dist/server/api-utils";
+// import { withSessionRoute } from "../../lib/session";
 import Profile from "../../models/profile";
 import User from '../../models/user';
 import { supabase } from '../../utils/subabase-client'
@@ -14,23 +15,18 @@ export type Session = {
     user: User | null
 }
 
-export default withSessionRoute(signInRout)
+// export default withSessionRoute(signInRoute)
 
-async function signInRout(req: NextApiRequest, res: NextApiResponse) {
+export default async function signInRoute(req: NextApiRequest, res: NextApiResponse<User | ApiError>) {
     const { email: email, password } = req.body;
-    const { session, error } = await supabase.auth.signIn({email: email, password: password})
-
+    const { user, error } = await supabase.auth.signIn({email: email, password: password})
+    
     if (error) {
-        return res.status(error?.status).json(error);
+        return res.status(error.status).json({name: 'api/signin', statusCode: error.status, message: error.message });
     }
 
-    if (!session?.user) {
-        return res.status(400).json('Something went wrong...');
-    }
+    const u: User = { ...user }
+    const response = await supabase.from<Profile>('profiles').select('*').eq('id', u.id).single();
 
-    req.session.user = session.user
-    const response = await supabase.from<Profile>('profiles').select('*').eq('id', session.user.id).single();
-    req.session.user.profile = response.body || undefined
-    await req.session.save()
-    return res.status(200).json(req.session);
+    return res.status(200).json(u);
 }

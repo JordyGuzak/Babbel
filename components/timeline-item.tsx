@@ -25,14 +25,14 @@ export default function TimelineItem({post, className, ...props}: TimelineItemPr
                     </div>
                     <div className="column grow">
                         <div className={styles["author-container"]}>
-                            <div className={styles.author}>{post.user?.profile?.username}</div>
+                            <div className={styles.author}>{post.username}</div>
                             <div className={styles.date}>{moment(post.modified_at).format('ll')}</div>
                         </div>
-                        <p className={styles.title}>{post.content}</p>
+                        <div className={styles.content}>{post.content}</div>
                         <div className={styles.stats}>
-                            <div onClick={commentsClickEventHandler} className={styles.comments}><FaRegComment /> {post.comments_count}</div>
-                            <div className={styles.likes}><FaRegHeart /> {post.likes_count}</div>
-                            <div className={styles.shared}><FaRetweet /> {post.shared_count}</div>
+                            <div onClick={commentsClickEventHandler} className={styles.comments}><FaRegComment /> {post.comments_count | 0}</div>
+                            <div className={styles.likes}><FaRegHeart /> {post.likes_count | 0}</div>
+                            <div className={styles.shared}><FaRetweet /> {post.shared_count | 0}</div>
                         </div>
                     </div>
                 </div>

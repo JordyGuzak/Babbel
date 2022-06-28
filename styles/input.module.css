@@ -21,7 +21,7 @@
 
 .elevation {
     border-radius: var(--border-radius-small);
-    opacity: 0.02;
+    opacity: 0.04;
 }
 
 .overlay {
@@ -37,11 +37,6 @@
     font-size: 1rem;
     transition: top 0.2s, font-size 0.2s;
 }
-
-/* .input:focus + .placeholder, .input.filled + .placeholder {
-    top: -1.5rem;
-    font-size: 0.8rem;
-} */
 
 .input.filled + .placeholder {
     opacity: 0;

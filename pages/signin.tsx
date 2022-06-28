@@ -8,9 +8,12 @@ import Input from "../components/input";
 import Text from "../components/text";
 import { withSessionSsr } from "../lib/session";
 import styles from '../styles/login.module.css'
+import { supabase } from "../utils/subabase-client";
 
-export default function SignIn({}: InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const router = useRouter();
+export default function SignIn({ response }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+    
+    console.log(response)
+    const router = useRouter()
     const [email, setEmail] = useState<string | null>(null)
     const [password, setPassword] = useState<string | null>(null)
 
@@ -31,13 +34,11 @@ export default function SignIn({}: InferGetServerSidePropsType<typeof getServerS
             method: "POST",
         });
 
-        const response = await res.json();
-
-        if (response.message) {
-            console.log(response.message)
+        if (res.ok) {
+            router.push(`/`)
+        } else {
+            console.log(res.statusText)
         }
-
-        if (response.user) router.push(`/`);
     }
 
     return (
@@ -65,7 +66,7 @@ export default function SignIn({}: InferGetServerSidePropsType<typeof getServerS
                 />
 
                 <Button className={classNames(styles.formButton, styles.submit, 'primary')} onClick={_ => signIn()}><Text>Sign in</Text></Button>
-                <Button className={classNames(styles.formButton, styles.forgot, 'surface')} onClick={_ => signIn()}><Text>Forgot password</Text></Button>
+                <Button className={classNames(styles.formButton, styles.forgot, 'surface')} onClick={_ => alert('Not implemented yet.')}><Text>Forgot password</Text></Button>
                 <div className={styles.forgotPassword}>No account yet? <Link href="/signup"><a className={styles.link}>Sign up</a></Link></div>
             </form>
         </div>
@@ -74,22 +75,29 @@ export default function SignIn({}: InferGetServerSidePropsType<typeof getServerS
 
 export const getServerSideProps = withSessionSsr(
     async function getServersideProps({ req, res }) {
-        const { user } = req.session;
+        const session = await supabase.auth.api.getUserByCookie(req, res);
 
-        if (user) {
-            res.setHeader("location", "/")
-            res.statusCode = 302
-            res.end()
+        const response = { 
+            user: session.user,
+            token: session.token,
+            error: session.error?.message
+         }
+
+        if (session.user) {
             return {
+                redirect: {
+                    destination: '/',
+                    permanent: false,
+                },
                 props: {
-                    user: user
+                    response: response
                 }
             }
         }
 
         return {
             props: {
-                user: {}
+                response: response
             }
         }
     }
