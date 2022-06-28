@@ -1,15 +1,13 @@
-import Author from "./author";
 
 type Post = {
     id: string,
-    author: Author,
-    createdAt: Date,
-    modifiedAt: Date,
-    title: string,
+    username: string,
+    created_at: Date,
+    modified_at: Date,
     content: string,
-    likes: number,
-    shared: number,
-    comments: number
+    likes_count: number,
+    shared_count: number,
+    comments_count: number
 }
 
 export default Post;

@@ -1,6 +1,6 @@
 import Profile from "./profile";
 
-type User = {
+interface User {
     id: string,
     aud: string
     confirmation_sent_at?: string

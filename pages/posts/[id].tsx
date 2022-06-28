@@ -11,13 +11,13 @@ export default function BlogPage() {
 
     const fetcher: Fetcher<Post> = (url: string) => fetch(url).then(res => res.json())
     const router = useRouter();
-    const { title } = router.query;
-    const { data } = useSWR<Post>(`/api/posts/${title}`, fetcher)
+    const { id: id } = router.query;
+    const { data } = useSWR<Post>(`/api/posts/${id}`, fetcher)
 
     return (
         <>
             <Head>
-                <title>{data?.title}</title>
+                <title>{data?.content}</title>
             </Head>
             <main className={styles.main}>
                 <Surface className={styles.post} elevation="medium">

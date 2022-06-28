@@ -1,4 +1,7 @@
-import { InferGetServerSidePropsType } from 'next'
+// import { InferGetServerSidePropsType } from 'next'
+import { ServerResponse } from 'http'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { NextApiRequestCookies } from 'next/dist/server/api-utils'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import useSWR, { Fetcher } from 'swr'
@@ -9,11 +12,12 @@ import Timeline from '../components/timeline'
 import TimelineItem from '../components/timeline-item'
 import useScroll from '../hooks/useScroll'
 import { withSessionSsr } from '../lib/session'
+// import { withSessionSsr } from '../lib/session'
 import Post from '../models/post'
 import styles from '../styles/index.module.css'
+import { supabase } from '../utils/subabase-client'
 
-export default function Home( {user} : InferGetServerSidePropsType<typeof getServerSideProps>) {
-
+export default function Home({ user }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const fetcher: Fetcher<Post[]> = (url: string) => fetch(url).then(res => res.json())
   const { data } = useSWR<Post[]>('api/posts', fetcher)
   const [navClassList, setNavClassList] = useState<string[]>([])
@@ -25,25 +29,25 @@ export default function Home( {user} : InferGetServerSidePropsType<typeof getSer
     if (scroll.y > 56 && scroll.y - scroll.previousY >= 0)
       classList.push(styles.navbarHidden);
 
-  setNavClassList(classList);
+    setNavClassList(classList);
 
   }, [scroll.y])
-  
+
   if (!data) {
     return null
   }
 
   return (
     <Layout>
-      <NavBar className={navClassList.join(' ')} user={user}/>
+      <NavBar className={navClassList.join(' ')} user={user} />
       <div className={styles.container}>
         <div className={styles.left}>
         </div>
         <div className={styles.center}>
-          {user ? <Compose className={styles.compose} /> : null}
+          {user ? <Compose className={styles.compose} user={user} /> : null}
           <Timeline className={styles.timeline}>
             {data.map(post => {
-              return (<Link key={post.id} href={`/posts/${post.title}`}>
+              return (<Link key={post.id} href={`/posts/${post.id}`}>
                 <a>
                   <TimelineItem className={styles.timelineItem} post={post} />
                 </a>
@@ -60,11 +64,12 @@ export default function Home( {user} : InferGetServerSidePropsType<typeof getSer
 }
 
 export const getServerSideProps = withSessionSsr(
-  async function getServerSideProps({ req }) {
+  async function getServerSideProps({ req, res }) {
+    const {user} = await supabase.auth.api.getUserByCookie(req, res);
     return {
       props: {
-        user: req.session.user
-      }
+        user: user
+      },
     }
   }
 )

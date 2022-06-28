@@ -8,13 +8,11 @@ import { supabase } from '../../utils/subabase-client'
 export default withSessionRoute(userRoute)
 
 async function userRoute(req: NextApiRequest, res: NextApiResponse<User | null | undefined>) {
-    // const { user } = await supabase.auth.api.getUserByCookie(req, res)
-    // res.status(200).json(user);
 
     const { user } = req.session;
     if (user) {
         if (!user.profile) {
-            const response = await supabase.from<Profile>('profiles').select('*').eq('user_id', user.id).single();
+            const response = await supabase.from<Profile>('profiles').select('*').eq('id', user.id).single();
 
             if (response.error) {
                 console.log(response.error)
