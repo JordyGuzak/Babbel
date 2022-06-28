@@ -25,8 +25,10 @@ export default async function signInRoute(req: NextApiRequest, res: NextApiRespo
         return res.status(error.status).json({name: 'api/signin', statusCode: error.status, message: error.message });
     }
 
-    const u: User = { ...user }
-    const response = await supabase.from<Profile>('profiles').select('*').eq('id', u.id).single();
-
-    return res.status(200).json(u);
+    if (!user) {
+        return res.status(400).json({name: 'api/signin', statusCode: 400, message: 'Something went wrong.' })
+    }
+    
+    // const response = await supabase.from<Profile>('profiles').select('*').eq('id', user.id).single();
+    return res.status(200).json({...user});
 }
