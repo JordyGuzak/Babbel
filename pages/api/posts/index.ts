@@ -15,7 +15,7 @@ async function handler(
             const getResponse = await supabase.from<Post>('posts_details').select('*')
             return response.status(200).json(getResponse.body || [])
         case 'POST':
-            const user = supabase.auth.user()
+            const { user } = await supabase.auth.api.getUserByCookie(request, response)
             if (!user) {
                 return response.status(401).send({ name: 'api/posts', statusCode: 401, message: 'Unauthorized' })
             }

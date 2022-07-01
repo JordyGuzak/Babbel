@@ -13,6 +13,16 @@ const commentsClickEventHandler: React.MouseEventHandler<HTMLDivElement> = (e) =
     e.preventDefault();
 }
 
+const getDateString = (date: Date): string => {
+    const now = new Date()
+    date = new Date(date);
+
+    const diff = now.getTime() - date.getTime()
+    const diffInDays = diff / (1000 * 60 * 60 * 24);  
+
+    return diffInDays >= 1 ? moment(date).format('ll') : moment(date).fromNow()
+}
+
 export default function TimelineItem({post, className, ...props}: TimelineItemProps) {
     return (
             <Surface className={classNames(styles['timeline-item'], className)} elevation="low" selectable {...props} color="surface">
@@ -26,7 +36,7 @@ export default function TimelineItem({post, className, ...props}: TimelineItemPr
                     <div className="column grow">
                         <div className={styles["author-container"]}>
                             <div className={styles.author}>{post.username}</div>
-                            <div className={styles.date}>{moment(post.modified_at).format('ll')}</div>
+                            <div className={styles.date}>{getDateString(post.created_at)}</div>
                         </div>
                         <div className={styles.content}>{post.content}</div>
                         <div className={styles.stats}>

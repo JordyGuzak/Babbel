@@ -52,7 +52,7 @@ export default function Compose({ className, user }: ComposeProps) {
                     <Button className={styles.button}><FaPollH title="poll" /></Button>
                     <Button className={styles.button}><MdGif title="gif" /></Button>
                 </div>
-                <Button className={styles.post} overlayClassName={styles["post-overlay"]} onClick={_ => post()}><FaRegPaperPlane title="send" /></Button>
+                <Button className={classNames(styles.post, 'primary')} overlayClassName={styles["post-overlay"]} onClick={_ => post()}><FaRegPaperPlane title="send" /></Button>
             </div>
         </Surface>
     )

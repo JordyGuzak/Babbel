@@ -9,9 +9,9 @@
 .textarea {
     position: relative;
     flex: 1 0 auto;
-    
     padding: 2rem 2rem 0 2rem;
     height: auto;
+    min-height: 5rem;
     overflow: auto;
 }
 
@@ -48,11 +48,11 @@
 
 .post {
     composes: button;
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
 }
 
 .post .post-overlay {
-    background-color: var(--primary-color);
+    /* background-color: var(--primary-color); */
 }
 
 .post:active > .post-overlay {
