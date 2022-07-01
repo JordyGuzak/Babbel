@@ -5,14 +5,12 @@ import Button from "./button";
 import { FaPollH, FaRegImage, FaRegPaperPlane, FaRegSmile } from "react-icons/fa";
 import { MdGif } from "react-icons/md"
 import classNames from "classnames";
-import User from "../models/user";
 
 interface ComposeProps {
     className?: string | undefined,
-    user: User
 }
 
-export default function Compose({ className, user }: ComposeProps) {
+export default function Compose({ className }: ComposeProps) {
 
     const textareaRef = useRef<HTMLDivElement>(null)
     const placeholderRef = useRef<HTMLSpanElement>(null)
@@ -32,8 +30,6 @@ export default function Compose({ className, user }: ComposeProps) {
             },
             method: "POST",
         });
-
-        console.log(response)
 
         if (textareaRef.current) {
             textareaRef.current.innerText = ''

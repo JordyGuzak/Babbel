@@ -1,7 +1,9 @@
 import { ApiError, Session, SupabaseClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
+import Profile from '../models/profile';
 import User from "../models/user";
+import signout from '../pages/api/signout';
 
 interface IAuthContext {
   user?: User | null
@@ -18,7 +20,19 @@ interface IAuthProviderProps {
   children: JSX.Element
 }
 
-export const AuthContext = createContext<IAuthContext>({});
+const defaultContext: IAuthContext = {
+  signIn: (email: string, password: string): Promise<{
+    user?: User | null
+    error?: ApiError | null
+  }> => {
+    return new Promise((resolve) => {
+      resolve({})
+    })
+  },
+  signOut: () => {}
+}
+
+export const AuthContext = createContext<IAuthContext>(defaultContext);
 
 export const AuthProvider = ({ supabase, children }: IAuthProviderProps) => {
   const [session, setSession] = useState<Session | null>(null);
@@ -33,6 +47,7 @@ export const AuthProvider = ({ supabase, children }: IAuthProviderProps) => {
     const { data: authListener } = supabase.auth.onAuthStateChange(async (event, currentSession) => {
       setSession(currentSession)
       setUser(currentSession?.user ?? null)
+
       await fetch('/api/auth', {
         method: 'POST',
         headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -42,6 +57,15 @@ export const AuthProvider = ({ supabase, children }: IAuthProviderProps) => {
 
       switch (event) {
         case 'SIGNED_IN':
+          if (!user)
+            return 
+
+          const { data } = await supabase.from<Profile>('profiles').select('*').eq('id', user.id).single();
+          if (data) {
+            user.profile = data
+            setUser(user)
+          }
+        
           router.push('/')
           break
         case 'SIGNED_OUT':
@@ -76,4 +100,10 @@ export const useAuth = () => {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
+}
+
+declare module '@supabase/supabase-js' {
+  interface User {
+    profile?: Profile
+  }
 }

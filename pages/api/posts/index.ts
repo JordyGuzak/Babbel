@@ -1,18 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import Post from '../../../models/post';
 import { ApiError } from 'next/dist/server/api-utils';
-import { withSessionRoute } from "../../../lib/session";
 import { supabase } from '../../../utils/subabase-client'
 
-export default withSessionRoute(handler)
-
-async function handler(
+export default async function handler(
     request: NextApiRequest,
     response: NextApiResponse<Post[] | ApiError>
 ) {
     switch (request.method) {
         case 'GET':
-            const getResponse = await supabase.from<Post>('posts_details').select('*')
+            const getResponse = await supabase.from<Post>('posts_details').select('*').order('created_at', { ascending: false})
             return response.status(200).json(getResponse.body || [])
         case 'POST':
             const { user } = await supabase.auth.api.getUserByCookie(request, response)

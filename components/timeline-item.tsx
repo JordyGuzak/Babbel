@@ -9,10 +9,6 @@ interface TimelineItemProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     post: Post
 }
 
-const commentsClickEventHandler: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    e.preventDefault();
-}
-
 const getDateString = (date: Date): string => {
     const now = new Date()
     date = new Date(date);
@@ -24,6 +20,18 @@ const getDateString = (date: Date): string => {
 }
 
 export default function TimelineItem({post, className, ...props}: TimelineItemProps) {
+
+    const commentsClickEventHandler: React.MouseEventHandler<HTMLDivElement> = (e) => {
+        e.preventDefault();
+    }
+
+    const likesClickEventHandler: React.MouseEventHandler<HTMLDivElement> = async (e) => {
+        e.preventDefault();
+    
+        const response = await fetch(`api/like/${post.id}`)
+        console.log(response)
+    }
+
     return (
             <Surface className={classNames(styles['timeline-item'], className)} elevation="low" selectable {...props} color="surface">
                 <div className="row">
@@ -40,8 +48,8 @@ export default function TimelineItem({post, className, ...props}: TimelineItemPr
                         </div>
                         <div className={styles.content}>{post.content}</div>
                         <div className={styles.stats}>
-                            <div onClick={commentsClickEventHandler} className={styles.comments}><FaRegComment /> {post.comments_count | 0}</div>
-                            <div className={styles.likes}><FaRegHeart /> {post.likes_count | 0}</div>
+                            <div className={styles.comments} onClick={commentsClickEventHandler} ><FaRegComment /> {post.comments_count | 0}</div>
+                            <div className={styles.likes} onClick={likesClickEventHandler} ><FaRegHeart /> {post.likes_count | 0}</div>
                             <div className={styles.shared}><FaRetweet /> {post.shared_count | 0}</div>
                         </div>
                     </div>
