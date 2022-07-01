@@ -18,10 +18,10 @@ async function signUpRoute(req: NextApiRequest, res: NextApiResponse) {
         return res.status(400).json('Something went wrong...')
     }
 
-    const response = await supabase.from<Profile>('profile').insert([{
+    const response = await supabase.from<Profile>('profiles').insert([{
         id: user.id,
         username: username,
-        updated_at: moment.utc().toDate()
+        updated_at: new Date()
     }])
     
     req.session.user = user

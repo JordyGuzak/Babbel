@@ -20,7 +20,6 @@
     flex-direction: column;
     justify-content: center;
     opacity: var(--emphasis-high);
-    color: var(--primary-color);
 }
 
 .controls {

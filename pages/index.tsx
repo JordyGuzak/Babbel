@@ -1,7 +1,5 @@
 // import { InferGetServerSidePropsType } from 'next'
-import { ServerResponse } from 'http'
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { NextApiRequestCookies } from 'next/dist/server/api-utils'
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import useSWR, { Fetcher } from 'swr'
@@ -11,8 +9,6 @@ import NavBar from '../components/navbar'
 import Timeline from '../components/timeline'
 import TimelineItem from '../components/timeline-item'
 import useScroll from '../hooks/useScroll'
-import { withSessionSsr } from '../lib/session'
-// import { withSessionSsr } from '../lib/session'
 import Post from '../models/post'
 import styles from '../styles/index.module.css'
 import { supabase } from '../utils/subabase-client'
@@ -44,7 +40,7 @@ export default function Home({ user }: InferGetServerSidePropsType<typeof getSer
         <div className={styles.left}>
         </div>
         <div className={styles.center}>
-          {user ? <Compose className={styles.compose} user={user} /> : null}
+          {user ? <Compose className={styles.compose} /> : null}
           <Timeline className={styles.timeline}>
             {data.map(post => {
               return (<Link key={post.id} href={`/posts/${post.id}`}>
@@ -63,13 +59,11 @@ export default function Home({ user }: InferGetServerSidePropsType<typeof getSer
   )
 }
 
-export const getServerSideProps = withSessionSsr(
-  async function getServerSideProps({ req, res }) {
-    const {user} = await supabase.auth.api.getUserByCookie(req, res);
-    return {
-      props: {
-        user: user
-      },
-    }
+export async function getServerSideProps({ req, res }: GetServerSidePropsContext) {
+  const { user } = await supabase.auth.api.getUserByCookie(req, res)
+  return {
+    props: {
+      user: user
+    },
   }
-)
+}
