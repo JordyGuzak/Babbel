@@ -106,7 +106,7 @@
     composes: stats__item;
 }
 
-.likes:hover {
+.likes:hover, .likes:global(.selected) {
     color: #ff1744;
 }
 

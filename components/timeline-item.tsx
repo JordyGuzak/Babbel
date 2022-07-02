@@ -49,7 +49,7 @@ export default function TimelineItem({post, className, ...props}: TimelineItemPr
                         <div className={styles.content}>{post.content}</div>
                         <div className={styles.stats}>
                             <div className={styles.comments} onClick={commentsClickEventHandler} ><FaRegComment /> {post.comments_count | 0}</div>
-                            <div className={styles.likes} onClick={likesClickEventHandler} ><FaRegHeart /> {post.likes_count | 0}</div>
+                            <div className={classNames(styles.likes, {selected: post.liked_by_me})} onClick={likesClickEventHandler} ><FaRegHeart /> {post.likes_count | 0}</div>
                             <div className={styles.shared}><FaRetweet /> {post.shared_count | 0}</div>
                         </div>
                     </div>

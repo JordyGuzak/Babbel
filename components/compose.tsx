@@ -5,12 +5,14 @@ import Button from "./button";
 import { FaPollH, FaRegImage, FaRegPaperPlane, FaRegSmile } from "react-icons/fa";
 import { MdGif } from "react-icons/md"
 import classNames from "classnames";
+import Post from "../models/post";
 
 interface ComposeProps {
     className?: string | undefined,
+    onPost?(post: Post): void
 }
 
-export default function Compose({ className }: ComposeProps) {
+export default function Compose({ className, onPost }: ComposeProps) {
 
     const textareaRef = useRef<HTMLDivElement>(null)
     const placeholderRef = useRef<HTMLSpanElement>(null)
@@ -20,8 +22,8 @@ export default function Compose({ className }: ComposeProps) {
         placeholderRef.current.style.display = textareaRef.current.innerText.length > 0 ? "none" : "block";
     }
 
-    const post = async () => {
-        const response = await fetch(`/api/posts`, {
+    const sendPostRequest = async (): Promise<Post | null> => {
+        const posts: Post[] = await fetch(`/api/posts`, {
             body: JSON.stringify({
                 content: textareaRef.current?.innerText,
             }),
@@ -29,7 +31,17 @@ export default function Compose({ className }: ComposeProps) {
                 "Content-Type": "application/json",
             },
             method: "POST",
-        });
+        }).then(res => res.json()) ?? []
+
+        return posts.length > 0 ? posts[0] : null
+    }
+
+    const post = async () => {
+        const post = await sendPostRequest()
+
+        if (post) {
+            onPost?.(post)
+        }
 
         if (textareaRef.current) {
             textareaRef.current.innerText = ''

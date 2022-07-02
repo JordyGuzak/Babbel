@@ -7,7 +7,8 @@ type Post = {
     content: string,
     likes_count: number,
     shared_count: number,
-    comments_count: number
+    comments_count: number,
+    liked_by_me: boolean
 }
 
 export default Post;
