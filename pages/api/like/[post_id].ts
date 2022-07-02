@@ -1,5 +1,4 @@
 import type {NextApiRequest, NextApiResponse } from 'next'
-import Post from '../../../models/post'
 import { supabase } from '../../../utils/subabase-client';
 
 type Like = {
@@ -7,10 +6,7 @@ type Like = {
     user_id: string
 }
 
-export default async function handler(
-    request: NextApiRequest, 
-    response: NextApiResponse
-    ) {
+export default async function handler(request: NextApiRequest, response: NextApiResponse) {
         const { post_id } = request.query
         const { user } = await supabase.auth.api.getUserByCookie(request, response)
 

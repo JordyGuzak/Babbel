@@ -16,9 +16,13 @@ export default async function handler(
             if (!user) {
                 return response.status(401).send({ name: 'api/posts', statusCode: 401, message: 'Unauthorized' })
             }
-            const post: Post = { user_id: user.id, ...request.body }
-            const res = await supabase.from<Post>('posts').insert([post])
-            return response.status(res.status).json(res.body || [])
+            const insertResponse = await supabase.from<Post>('posts').insert([{ user_id: user.id, ...request.body }])
+            let result: Post[] = []
+            if (insertResponse.data && insertResponse.data.length > 0) {
+                const {data} = await supabase.from<Post>('posts_details').select('*').eq('id', insertResponse.data[0].id)
+                result = data ?? [];
+            }
+            return response.status(insertResponse.status).json(result)
 
         default:
             return response.status(405).send({ name: 'api/posts', statusCode: 405, message: 'Unsupported method' })

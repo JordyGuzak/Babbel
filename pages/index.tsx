@@ -15,15 +15,22 @@ import { supabase } from '../utils/subabase-client'
 
 export default function Home({ user }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const fetcher: Fetcher<Post[]> = (url: string) => fetch(url).then(res => res.json())
-  const { data } = useSWR<Post[]>('api/posts', fetcher)
+  const [posts, setPosts] = useState<Post[]>([])
   const [navClassList, setNavClassList] = useState<string[]>([])
+  const { data } = useSWR<Post[]>('api/posts', fetcher)
   const scroll = useScroll()
+  const onPost = (post: Post) => setPosts([post, ...posts])
+
+  useEffect(() => {
+    if (data)
+      setPosts(data)
+  }, [data])
 
   useEffect(() => {
     const classList: Array<string> = [];
 
     if (scroll.y > 56 && scroll.y - scroll.previousY >= 0)
-      classList.push(styles.navbarHidden);
+      classList.push(styles.navbarHidden)
 
     setNavClassList(classList);
 
@@ -40,9 +47,9 @@ export default function Home({ user }: InferGetServerSidePropsType<typeof getSer
         <div className={styles.left}>
         </div>
         <div className={styles.center}>
-          {user ? <Compose className={styles.compose} /> : null}
+          {user ? <Compose className={styles.compose} onPost={onPost}/> : null}
           <Timeline className={styles.timeline}>
-            {data.map(post => {
+            {posts.map(post => {
               return (<Link key={post.id} href={`/posts/${post.id}`}>
                 <a>
                   <TimelineItem className={styles.timelineItem} post={post} />

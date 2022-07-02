@@ -57,13 +57,12 @@ export const AuthProvider = ({ supabase, children }: IAuthProviderProps) => {
 
       switch (event) {
         case 'SIGNED_IN':
-          if (!user)
+          if (!currentSession?.user)
             return 
 
-          const { data } = await supabase.from<Profile>('profiles').select('*').eq('id', user.id).single();
+          const { data } = await supabase.from<Profile>('profiles').select('*').eq('id', currentSession.user.id).single();
           if (data) {
-            user.profile = data
-            setUser(user)
+            currentSession.user.profile = data
           }
         
           router.push('/')
