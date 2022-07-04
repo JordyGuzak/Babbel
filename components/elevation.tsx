@@ -7,19 +7,10 @@ interface ElevationProps {
     className?: string | undefined
 }
 
-const getElevation = (level: ElevationLevel): number => {
-    switch (level) {
-        case 'low':
-            return 0.03;
-        case 'medium':
-            return 0.05;
-        case 'high':
-            return 0.08;
-        default:
-            return 0;
-    }
-}
-
 export default function Elevation({level, className}: ElevationProps) {
-    return <div className={classNames(styles.elevation, className)} />
+    return <div className={classNames(styles.elevation, className,  { 
+        'low': level == 'low',
+        'medium': level == 'medium',
+        'high': level == 'high',
+    })}/>
 }
