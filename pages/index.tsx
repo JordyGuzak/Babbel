@@ -1,4 +1,3 @@
-// import { InferGetServerSidePropsType } from 'next'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -59,7 +58,6 @@ export default function Home({ user }: InferGetServerSidePropsType<typeof getSer
           </Timeline>
         </div>
         <div className={styles.right}>
-
         </div>
       </div>
     </Layout>
