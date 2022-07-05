@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import React, { FormEventHandler, useState } from "react"
 import Button from "../components/button"
 import Input from "../components/input"
+import Text from "../components/text"
 import styles from '../styles/register.module.css'
 
 const SignUp: NextPage = () => {
@@ -11,6 +12,7 @@ const SignUp: NextPage = () => {
     const [username, setUsername] = useState<string | null>(null)
     const [email, setEmail] = useState<string | null>(null)
     const [password, setPassword] = useState<string | null>(null)
+    const [error, setError] = useState<string | null>(null)
 
     const formSubmit: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault()
@@ -18,6 +20,21 @@ const SignUp: NextPage = () => {
     }
 
     const registerUser = async () => {
+        if (!username) {
+            setError('Please enter your username')
+            return
+        }
+
+        if (!email) {
+            setError('Please enter your email')
+            return
+        }
+
+        if (!password) {
+            setError('Please enter your password')
+            return
+        }
+
         const res = await fetch(`/api/signup`, {
             body: JSON.stringify({
                 username: username,
@@ -31,17 +48,21 @@ const SignUp: NextPage = () => {
         });
 
         const response = await res.json();
-        if (response.message) {
-            console.log(response.message)
+        console.log(response)
+        if (response.status != 200 || response.status != 201) {
+            setError('Username already exists')
         }
 
-        if (response.user) router.push(`/`)
+        if (response.status == 201) router.push(`/`)
     }
 
     return (
         <div className={styles.main}>
             <form className={styles.form} onSubmit={formSubmit}>
                 <h1 className={styles.header}>Sign up</h1>
+                <div className={styles.errorContainer}>
+                    <Text className={styles.error} style={{ visibility: error ? 'visible' : 'hidden' }}>{error}</Text>
+                </div>
                 <Input
                     id="username"
                     name="username"

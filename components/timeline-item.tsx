@@ -15,7 +15,7 @@ const getDateString = (date: Date): string => {
     date = new Date(date);
 
     const diff = now.getTime() - date.getTime()
-    const diffInDays = diff / (1000 * 60 * 60 * 24);  
+    const diffInDays = diff / (1000 * 60 * 60 * 24);
 
     return diffInDays >= 1 ? moment(date).format('ll') : moment(date).fromNow()
 }
@@ -26,7 +26,7 @@ type LikeResponse = {
     }
 }
 
-export default function TimelineItem({post, className, ...props}: TimelineItemProps) {
+export default function TimelineItem({ post, className, ...props }: TimelineItemProps) {
     const [hasLiked, setHasLiked] = useState<Boolean>(post.liked_by_me)
     const [likesCount, setLikesCount] = useState<number>(post.likes_count)
     const [likeRequestPending, setLikeRequestPending] = useState<Boolean>(false)
@@ -53,27 +53,27 @@ export default function TimelineItem({post, className, ...props}: TimelineItemPr
     }
 
     return (
-            <Surface className={classNames(styles['timeline-item'], className)} elevation="low" selectable {...props} color="surface">
-                <div className="row">
-                    <div className="column">
-                        <Surface elevation="low" color="on-surface" className={styles["profile-picture"]}>
-                            <div className={styles["profile-picture--head"]} />
-                            <div className={styles["profile-picture--body"]} />
-                        </Surface>
+        <Surface className={classNames(styles['timeline-item'], className)} elevation="low" selectable {...props} color="surface">
+            <div className="row">
+                <div className="column">
+                    <Surface elevation="low" color="on-surface" className={styles["profile-picture"]}>
+                        <div className={styles["profile-picture--head"]} />
+                        <div className={styles["profile-picture--body"]} />
+                    </Surface>
+                </div>
+                <div className="column grow">
+                    <div className={styles["author-container"]}>
+                        <div className={styles.author}>{post.username}</div>
+                        <div className={styles.date}>{getDateString(post.created_at)}</div>
                     </div>
-                    <div className="column grow">
-                        <div className={styles["author-container"]}>
-                            <div className={styles.author}>{post.username}</div>
-                            <div className={styles.date}>{getDateString(post.created_at)}</div>
-                        </div>
-                        <div className={styles.content}>{post.content}</div>
-                        <div className={styles.stats}>
-                            <div className={styles.comments} onClick={commentsClickEventHandler} ><FaRegComment /> {post.comments_count | 0}</div>
-                            <div className={classNames(styles.likes, {selected: hasLiked})} onClick={likesClickEventHandler} ><FaRegHeart /> {likesCount}</div>
-                            <div className={styles.shared}><FaRetweet /> {post.shared_count | 0}</div>
-                        </div>
+                    <div className={styles.content}>{post.content}</div>
+                    <div className={styles.stats}>
+                        <div className={styles.comments} onClick={commentsClickEventHandler} ><FaRegComment /> {post.comments_count | 0}</div>
+                        <div className={classNames(styles.likes, { selected: hasLiked })} onClick={likesClickEventHandler} ><FaRegHeart /> {likesCount}</div>
+                        <div className={styles.shared}><FaRetweet /> {post.shared_count | 0}</div>
                     </div>
                 </div>
-            </Surface>
+            </div>
+        </Surface>
     )
 }

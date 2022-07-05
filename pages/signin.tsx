@@ -13,6 +13,7 @@ import { supabase } from "../utils/subabase-client";
 export default function SignIn({ }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const [email, setEmail] = useState<string | null>(null)
     const [password, setPassword] = useState<string | null>(null)
+    const [error, setError] = useState<string | null>(null)
     const { signIn } = useAuth();
 
     const formSubmit: FormEventHandler<HTMLFormElement> = (event) => {
@@ -27,19 +28,21 @@ export default function SignIn({ }: InferGetServerSidePropsType<typeof getServer
 
     const submit = async () => {
         if (!email) {
-            console.log('Please enter your email')
+            setError('Please enter your email')
             return
         }
 
         if (!password) {
-            console.log('Please enter your password')
+            setError('Please enter your password')
             return
         }
+
+        setError(null)
 
         const { error } = await signIn(email, password)
 
         if (error) {
-            console.log(error)
+            setError(error.message)
         }
     }
 
@@ -47,6 +50,9 @@ export default function SignIn({ }: InferGetServerSidePropsType<typeof getServer
         <div className={styles.main}>
             <form className={styles.form} onSubmit={formSubmit}>
                 <h1 className={styles.header}>Sign in</h1>
+                <div className={styles.errorContainer}>
+                    <Text className={styles.error} style={{ visibility: error ? 'visible' : 'hidden' }}>{error}</Text>
+                </div>
                 <Input
                     id="email"
                     name="email"
@@ -67,7 +73,7 @@ export default function SignIn({ }: InferGetServerSidePropsType<typeof getServer
                     required
                 />
 
-                <button type="submit" style={{display: 'none'}}/>
+                <button type="submit" style={{ display: 'none' }} />
                 <Button className={classNames(styles.formButton, styles.submit, 'primary')} onClick={submitButtonClick}><Text>Sign in</Text></Button>
                 <Button className={classNames(styles.formButton, styles.forgot, 'surface')} onClick={_ => alert('Not implemented yet.')}><Text>Forgot password</Text></Button>
                 <div className={styles.forgotPassword}>No account yet? <Link href="/signup"><a className={styles.link}>Sign up</a></Link></div>

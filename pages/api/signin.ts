@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { ApiError } from "next/dist/server/api-utils";
-import { withSessionRoute } from "../../lib/session";
 import Profile from "../../models/profile";
 import User from '../../models/user';
 import { supabase } from '../../utils/subabase-client'
@@ -14,8 +13,6 @@ export type Session = {
     token_type: string
     user: User | null
 }
-
-// export default withSessionRoute(signInRoute)
 
 export default async function signInRoute(req: NextApiRequest, res: NextApiResponse<User | ApiError>) {
     const { email: email, password } = req.body;

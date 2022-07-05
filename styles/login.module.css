@@ -19,12 +19,24 @@
 }
 
 .header {
-    margin-bottom: 2rem;
 }
 
 .link {
     color: var(--primary-color);
     opacity: var(--emphasis-medium);
+}
+
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 2rem;
+}
+
+.error {
+    color: var(--error-color);
+    visibility: hidden;
+    transition: visibility 1s;
 }
 
 .formButton {
