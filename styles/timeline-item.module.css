@@ -6,45 +6,13 @@
     cursor: pointer;
 }
 
-.profile-picture {
-    position: relative;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 1rem;
-}
-
-.profile-picture--head {
-    position: absolute;
-    width: 33%;
-    height: 35%;
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--on-surface-color);
-    opacity: var(--emphasis-medium);
-}
-
-.profile-picture--body {
-    position: absolute;
-    width: 66%;
-    height:66%;
-    border-radius: 50%;
-    left: 50%;
-    bottom: -40%;
-    transform: translate(-50%);
-    background-color: var(--on-surface-color);
-    opacity: var(--emphasis-medium);
-}
 
 .content {
     opacity: var(--emphasis-high);
     margin-bottom: 1rem;
 }
 
-.author-container {
+.authorContainer {
     margin-bottom: 1rem;
 }
 

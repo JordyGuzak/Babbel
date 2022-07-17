@@ -1,6 +1,6 @@
 import '../styles/global.css'
 import type { AppProps } from 'next/app'
-import { AuthProvider } from '../context/auth'
+import { AuthProvider } from '../hooks/auth'
 import { supabase } from '../utils/subabase-client'
 
 function App({ Component, pageProps }: AppProps) {

@@ -6,6 +6,9 @@ import useSWR, { Fetcher } from 'swr'
 import Surface from "../../components/surface";
 import Post from "../../models/post";
 import styles from "../../styles/post.module.css"
+import Layout from "../../components/layout"
+import ProfilePicture from "../../components/profile-picture";
+import Text from "../../components/text";
 
 export default function BlogPage() {
 
@@ -14,16 +17,23 @@ export default function BlogPage() {
     const { id: id } = router.query;
     const { data } = useSWR<Post>(`/api/posts/${id}`, fetcher)
 
+    if (!data)
+        return <></>
+
     return (
-        <>
+        <Layout>
             <Head>
                 <title>{data?.content}</title>
             </Head>
             <main className={styles.main}>
                 <Surface className={styles.post} elevation="medium">
+                    <div className={styles.userInfo}>
+                        <ProfilePicture />
+                        <Text emphasis='medium' className={styles.username}>{data.username}</Text>
+                    </div>
                     <ReactMarkdown>{data?.content || ''}</ReactMarkdown>
                 </Surface>
             </main>
-        </>
+        </Layout>
     );
 }

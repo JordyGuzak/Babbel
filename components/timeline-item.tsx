@@ -5,6 +5,7 @@ import Surface from "./surface"
 import { FaRegComment, FaRegHeart, FaRetweet } from 'react-icons/fa'
 import classNames from "classnames"
 import { useState } from "react"
+import ProfilePicture from "./profile-picture"
 
 interface TimelineItemProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     post: Post
@@ -56,13 +57,10 @@ export default function TimelineItem({ post, className, ...props }: TimelineItem
         <Surface className={classNames(styles['timeline-item'], className)} elevation="low" selectable {...props} color="surface">
             <div className="row">
                 <div className="column">
-                    <Surface elevation="low" color="on-surface" className={styles["profile-picture"]}>
-                        <div className={styles["profile-picture--head"]} />
-                        <div className={styles["profile-picture--body"]} />
-                    </Surface>
+                    <ProfilePicture />
                 </div>
                 <div className="column grow">
-                    <div className={styles["author-container"]}>
+                    <div className={styles.authorContainer}>
                         <div className={styles.author}>{post.username}</div>
                         <div className={styles.date}>{getDateString(post.created_at)}</div>
                     </div>

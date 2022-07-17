@@ -6,7 +6,7 @@ import React, { FormEventHandler, useState } from "react";
 import Button from "../components/button";
 import Input from "../components/input";
 import Text from "../components/text";
-import { useAuth } from "../context/auth";
+import { useAuth } from "../hooks/auth";
 import styles from '../styles/login.module.css'
 import { supabase } from "../utils/subabase-client";
 

@@ -3,7 +3,7 @@ import styles from '../styles/navbar.module.css'
 import Link from 'next/link'
 import classNames from 'classnames'
 import Text from './text'
-import { useAuth } from '../context/auth'
+import { useAuth } from '../hooks/auth'
 
 interface INavBarProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     user?: User | null |undefined

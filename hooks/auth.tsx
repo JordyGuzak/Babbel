@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { createContext, useContext, useEffect, useState } from 'react';
 import Profile from '../models/profile';
 import User from "../models/user";
-import signout from '../pages/api/signout';
 
 interface IAuthContext {
   user?: User | null
