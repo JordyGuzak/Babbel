@@ -1,10 +1,13 @@
-import Post from "../models/post"
-import styles from "../styles/timeline-item.module.css"
 import moment from 'moment'
-import Surface from "./surface"
 import { FaRegComment, FaRegHeart, FaRetweet } from 'react-icons/fa'
 import classNames from "classnames"
 import { useState } from "react"
+
+import styles from "components/timeline-item/timeline-item.module.css"
+import Surface from "components/surface"
+import ProfilePicture from "components/profile-picture"
+import Post from "models/post"
+import { useAuth } from 'hooks/auth'
 
 interface TimelineItemProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     post: Post
@@ -30,6 +33,7 @@ export default function TimelineItem({ post, className, ...props }: TimelineItem
     const [hasLiked, setHasLiked] = useState<Boolean>(post.liked_by_me)
     const [likesCount, setLikesCount] = useState<number>(post.likes_count)
     const [likeRequestPending, setLikeRequestPending] = useState<Boolean>(false)
+    const { user } = useAuth()
 
     const sendLikeRequest = (): Promise<LikeResponse> => {
         return fetch(`api/like/${post.id}`).then(res => res.json())
@@ -42,7 +46,7 @@ export default function TimelineItem({ post, className, ...props }: TimelineItem
     const likesClickEventHandler: React.MouseEventHandler<HTMLDivElement> = async (e) => {
         e.preventDefault();
 
-        if (likeRequestPending)
+        if (!user || likeRequestPending)
             return
 
         setLikeRequestPending(true)
@@ -56,13 +60,10 @@ export default function TimelineItem({ post, className, ...props }: TimelineItem
         <Surface className={classNames(styles['timeline-item'], className)} elevation="low" selectable {...props} color="surface">
             <div className="row">
                 <div className="column">
-                    <Surface elevation="low" color="on-surface" className={styles["profile-picture"]}>
-                        <div className={styles["profile-picture--head"]} />
-                        <div className={styles["profile-picture--body"]} />
-                    </Surface>
+                    <ProfilePicture />
                 </div>
                 <div className="column grow">
-                    <div className={styles["author-container"]}>
+                    <div className={styles.authorContainer}>
                         <div className={styles.author}>{post.username}</div>
                         <div className={styles.date}>{getDateString(post.created_at)}</div>
                     </div>

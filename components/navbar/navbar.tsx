@@ -1,9 +1,10 @@
-import User from '../models/user'
-import styles from '../styles/navbar.module.css'
 import Link from 'next/link'
 import classNames from 'classnames'
-import Text from './text'
-import { useAuth } from '../context/auth'
+
+import styles from 'components/navbar/navbar.module.css'
+import Text from 'components/text'
+import User from 'models/user'
+import { useAuth } from 'hooks/auth'
 
 interface INavBarProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     user?: User | null |undefined

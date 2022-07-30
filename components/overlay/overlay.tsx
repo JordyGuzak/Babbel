@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import styles from '../styles/overlay.module.css'
+import styles from 'components/overlay/overlay.module.css'
 
 interface OverlayProps {
     className?: string | undefined

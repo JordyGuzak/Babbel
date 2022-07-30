@@ -1,8 +1,9 @@
-import classNames from 'classnames'
 import React, { useRef } from 'react'
-import styles from '../styles/input.module.css'
-import Elevation from './elevation';
-import Overlay from './overlay';
+import classNames from 'classnames'
+
+import styles from 'components/input/input.module.css'
+import Elevation from 'components/elevation';
+import Overlay from 'components/overlay';
 
 interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
 }

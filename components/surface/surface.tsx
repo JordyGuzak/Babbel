@@ -1,9 +1,10 @@
-import { ThemeColor } from "../types/theme"
-import Elevation from "./elevation"
-import Overlay from "./overlay"
-import styles from '../styles/surface.module.css'
 import classNames from 'classnames'
-import ElevationLevel from "../types/elevation-level"
+
+import styles from 'components/surface/surface.module.css'
+import Elevation from "components/elevation"
+import Overlay from "components/overlay/overlay"
+import ElevationLevel from "types/elevation-level"
+import { ThemeColor } from "types/theme"
 
 interface SurfaceProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     elevation?: ElevationLevel,

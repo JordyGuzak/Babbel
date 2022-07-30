@@ -1,8 +1,8 @@
-import classNames from "classnames";
 import React from "react";
-import styles from "../styles/button.module.css"
-import Surface from "./surface";
+import classNames from "classnames";
 
+import styles from "components/button/button.module.css"
+import Surface from "components/surface/surface";
 
 export interface ButtonProps {
     children?: JSX.Element | JSX.Element[] | string | undefined,

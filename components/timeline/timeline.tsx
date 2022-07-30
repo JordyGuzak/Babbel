@@ -1,5 +1,4 @@
-import { ReactElement } from 'react'
-import styles from '../styles/timeline.module.css'
+import styles from 'components/timeline/timeline.module.css'
 
 interface TimelineProps {
     children?: JSX.Element | JSX.Element[] | string,

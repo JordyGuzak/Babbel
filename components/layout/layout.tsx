@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/layout.module.css'
+import styles from 'components/layout/layout.module.css'
 
 interface LayoutProps {
     children?: JSX.Element | JSX.Element[] | string

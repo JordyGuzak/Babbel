@@ -6,12 +6,12 @@
 
 .post {
     margin-top: 3rem;
-    border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+    border-radius: var(--border-radius-medium);
     padding: 2rem;
-    min-height: calc(100vh - 3rem);
+    /* in-height: calc(100vh - 3rem);*/
     width: 800px;
     font-size: 1.4rem;
-    font-family: 'Montserrat', sans-serif;
+/*    font-family: 'Montserrat', sans-serif;*/
 }
 
 .post h1,
@@ -31,10 +31,22 @@
     max-width: 100%;
 }
 
+.userInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.username {
+   opacity: var(--emphasis-medium); 
+   font-weight: bold;
+   align-self: flex-end;
+}
+
 @media (max-width: 600px) {
     .post {
         margin-top: 0;
         width: 100%;
-        min-height: 100vh;
+        /*min-height: 100vh;*/
     }
 }

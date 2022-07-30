@@ -1,6 +1,4 @@
-import classNames from "classnames"
-import { Children } from "react"
-import styles from "../styles/text.module.css"
+import styles from "components/text/text.module.css"
 
 type Emphasis = 'high' | 'medium' | 'low'
 
