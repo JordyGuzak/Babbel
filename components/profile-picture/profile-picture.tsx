@@ -1,5 +1,5 @@
-import Surface from '../components/surface'
-import styles from '../styles/profile-picture.module.css'
+import styles from 'components/profile-picture/profile-picture.module.css'
+import Surface from 'components/surface/surface'
 
 interface IProfilePictureProps {
     width?: string,

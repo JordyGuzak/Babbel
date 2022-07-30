@@ -1,11 +1,12 @@
-import Post from "../models/post"
-import styles from "../styles/timeline-item.module.css"
 import moment from 'moment'
-import Surface from "./surface"
 import { FaRegComment, FaRegHeart, FaRetweet } from 'react-icons/fa'
 import classNames from "classnames"
 import { useState } from "react"
-import ProfilePicture from "./profile-picture"
+
+import styles from "components/timeline-item/timeline-item.module.css"
+import Surface from "components/surface"
+import ProfilePicture from "components/profile-picture"
+import Post from "models/post"
 
 interface TimelineItemProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     post: Post

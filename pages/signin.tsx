@@ -1,14 +1,12 @@
-import classNames from "classnames";
+import React, { FormEventHandler, useState } from "react";
 import type { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { FormEventHandler, useState } from "react";
-import Button from "../components/button";
-import Input from "../components/input";
-import Text from "../components/text";
-import { useAuth } from "../hooks/auth";
-import styles from '../styles/login.module.css'
-import { supabase } from "../utils/subabase-client";
+import classNames from "classnames";
+
+import { Button, Input, Text } from 'components'
+import styles from 'styles/login.module.css'
+import { useAuth } from "hooks/auth";
+import { supabase } from "utils/subabase-client";
 
 export default function SignIn({ }: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const [email, setEmail] = useState<string | null>(null)

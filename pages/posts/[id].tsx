@@ -1,14 +1,14 @@
 import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from 'next/router';
 import ReactMarkdown from "react-markdown";
 import useSWR, { Fetcher } from 'swr'
-import Surface from "../../components/surface";
-import Post from "../../models/post";
-import styles from "../../styles/post.module.css"
-import Layout from "../../components/layout"
-import ProfilePicture from "../../components/profile-picture";
-import Text from "../../components/text";
+
+import Post from "models/post";
+import styles from "styles/post.module.css"
+import Layout from "components/layout"
+import ProfilePicture from "components/profile-picture"
+import Surface from "components/surface";
+import Text from "components/text";
 
 export default function BlogPage() {
 

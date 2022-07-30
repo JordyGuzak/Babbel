@@ -1,6 +1,7 @@
-import styles from '../styles/elevation.module.css'
 import classNames from 'classnames'
-import ElevationLevel from '../types/elevation-level';
+
+import styles from 'components/elevation/elevation.module.css'
+import ElevationLevel from 'types/elevation-level';
 
 interface ElevationProps {
     level?: ElevationLevel,

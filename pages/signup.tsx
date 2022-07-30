@@ -2,10 +2,11 @@ import classNames from "classnames"
 import type { NextPage } from "next"
 import { useRouter } from "next/router"
 import React, { FormEventHandler, useState } from "react"
-import Button from "../components/button"
-import Input from "../components/input"
-import Text from "../components/text"
-import styles from '../styles/register.module.css'
+
+import styles from 'styles/register.module.css'
+import Button from "components/button"
+import Input from "components/input/input"
+import Text from "components/text"
 
 const SignUp: NextPage = () => {
     const router = useRouter();

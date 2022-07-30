@@ -1,11 +1,12 @@
-import Surface from "./surface";
-import styles from "../styles/compose.module.css";
 import React, { useRef } from "react";
-import Button from "./button";
 import { FaPollH, FaRegImage, FaRegPaperPlane, FaRegSmile } from "react-icons/fa";
 import { MdGif } from "react-icons/md"
 import classNames from "classnames";
-import Post from "../models/post";
+
+import styles from "components/compose/compose.module.css";
+import Surface from "components/surface";
+import Button from "components/button";
+import Post from "models/post";
 
 interface ComposeProps {
     className?: string | undefined,
